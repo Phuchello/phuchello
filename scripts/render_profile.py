@@ -11,6 +11,7 @@ Single canonical YAML interpretation ensures 100% determinism between local and 
 import sys
 import os
 import argparse
+import textwrap
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 
@@ -76,63 +77,20 @@ def format_terminal_header(profile_data: Dict[str, Any]) -> str:
     location = identity.get("location", "")
     tagline = identity.get("tagline", "")
 
-    # Target box content width
-    content_width = 75
+    def format_field(label: str, value: str) -> List[str]:
+        wrapped = textwrap.wrap(value, width=64) or [""]
+        return [f"{label:<12}{wrapped[0]}"] + [f"{'':<12}{line}" for line in wrapped[1:]]
 
-    header_space = content_width - len(title) - len(sys_state)
-    if header_space < 1:
-        header_line = f"│ {title} {sys_state}│"
-    else:
-        header_line = f"│ {title}{' ' * header_space}{sys_state}│"
+    lines = [title, sys_state, ""]
+    lines.extend(format_field("IDENTITY", f"{name} / {handle}"))
+    lines.extend(format_field("FOCUS", role))
+    lines.extend(format_field("AFFILIATION", institution))
+    lines.extend(format_field("LOCATION", location))
+    lines.append("")
+    lines.extend(format_field("MISSION", tagline))
 
-    def format_row(label: str, value: str) -> List[str]:
-        prefix = f"│ {label:<12}: "
-        avail = content_width - len(prefix) + 1  # room before right border
-        if len(value) <= avail:
-            return [f"{prefix}{value}{' ' * (avail - len(value))}│"]
-        # Split across lines cleanly
-        words = value.split(" ")
-        lines = []
-        cur_line = ""
-        for w in words:
-            if not cur_line:
-                cur_line = w
-            elif len(cur_line) + 1 + len(w) <= avail:
-                cur_line += " " + w
-            else:
-                lines.append(cur_line)
-                cur_line = w
-        if cur_line:
-            lines.append(cur_line)
-        
-        res = []
-        for i, l in enumerate(lines):
-            if i == 0:
-                res.append(f"{prefix}{l}{' ' * (avail - len(l))}│")
-            else:
-                indent_prefix = f"│ {' ' * 14}"
-                indent_avail = content_width - len(indent_prefix) + 1
-                res.append(f"{indent_prefix}{l}{' ' * (indent_avail - len(l))}│")
-        return res
-
-    top_border = f"┌{'─' * (content_width + 2)}┐"
-    mid_border = f"├{'─' * (content_width + 2)}┤"
-    bot_border = f"└{'─' * (content_width + 2)}┘"
-
-    rows = []
-    rows.append(top_border)
-    rows.append(header_line)
-    rows.append(mid_border)
-    
-    rows.extend(format_row("IDENTITY", f"{name} ({handle})"))
-    rows.extend(format_row("ROLE", role))
-    rows.extend(format_row("AFFILIATION", institution))
-    rows.extend(format_row("LOCATION", location))
-    rows.extend(format_row("MISSION", tagline))
-    rows.append(bot_border)
-
-    box_content = "\n".join(rows)
-    return f"```text\n{box_content}\n```"
+    terminal_output = "\n".join(lines)
+    return f"```text\n{terminal_output}\n```"
 
 
 def format_overview(profile_data: Dict[str, Any]) -> str:
