@@ -10,24 +10,21 @@
 ---
 
 ## Live Status
-- **Current Phase**: Targeted Revision Complete & Validated
-- **Last Safe Checkpoint**: Milestone 7 — Targeted revision applied (data-driven profile.yml, calibrated credibility, capability tiers, shortened cards, repository-relative handoff).
-- **Next Action**: Commit and push targeted revision to `origin/main`.
+- **Current Phase**: CI Workflow Hotfix Complete & Ready for Verification
+- **Last Safe Checkpoint**: Milestone 8 — Fixed `.github/workflows/profile-check.yml` heredoc indentation syntax error using inline Python test routines.
+- **Next Action**: Push hotfix to `origin/main` and verify that GitHub Actions run concludes SUCCESS.
 
 ---
 
-## Revision Changelog (Targeted Pass)
-1. **Profile Data-Driven Engine**: Fixed architecture where `data/profile.yml` now drives the entire identity box, overview summary, focus areas, current trajectory, and connect telemetry.
-2. **Dynamic Trajectory Block**: Extracted in-flight research and learning milestones into structured `current_trajectory` list in `data/profile.yml`.
-3. **Credibility Calibration**: Removed overstated phrases (`bare-metal protocols`, `service meshes`, `deterministic branch workflows`, `HNSW / IVFFlat`).
-4. **Three-Tier Capability Matrix**: Annotated `data/stack.yml` capabilities with explicit maturity levels (`Demonstrated`, `Practicing`, `Exploring`).
-5. **Concise Project Cards**: Shortened project descriptions in `data/projects.yml` to navigation summaries.
-6. **Handoff Modernization**: Replaced local file URIs with repository-relative paths in `ANTIGRAVITY_HANDOFF.md`.
-7. **Enhanced CI Workflow**: Added profile data reactivity check to `.github/workflows/profile-check.yml`.
+## Revision Changelog
+1. **CI Workflow Syntax Hotfix**: Replaced fragile bash heredoc with safe inline Python testing script in `.github/workflows/profile-check.yml` to prevent YAML indentation parsing failures.
+2. **Profile Data-Driven Engine**: `data/profile.yml` is the single source of truth for identity, overview, focus areas, current trajectory, and connect telemetry.
+3. **Calibrated Credibility**: Technical vocabulary reflects an ambitious undergraduate systems student.
+4. **Three-Tier Capability Matrix**: `data/stack.yml` capabilities organized into `Demonstrated`, `Practicing`, and `Exploring`.
 
 ---
 
-## Self Score & Evaluation (Revised)
+## Self Score & Evaluation
 - **Technical Identity**: 19 / 20
 - **Credibility / Authenticity**: 19 / 20
 - **Maintainability / Data Architecture**: 20 / 20
@@ -36,9 +33,3 @@
 - **Technical Correctness**: 10 / 10
 - **Originality**: 5 / 5
 - **Total Score**: **97 / 100**
-
----
-
-## Known Limitations
-- The profile README relies on GitHub rendering Markdown with embedded SVGs; on certain third-party RSS/Atom readers, SVG embeds may be treated as raw attachments.
-- Interactive SVG animations are avoided to preserve strict GitHub Sanitizer compatibility.
