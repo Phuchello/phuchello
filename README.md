@@ -147,9 +147,12 @@ Modular backend platform featuring async HTTP ingestion pipelines for academic m
 <div align="center">
 
 ```text
-[phuchello@noc-uit-01 ~]$ ping -c 1 vntrphuc.network
-64 bytes from uit-node-01: icmp_seq=1 ttl=64 time=0.038 ms
---- status: 0% packet loss | systems operational | open to research collaboration ---
+[phuchello@noc-uit-01 ~]$ whoami
+Võ Trọng Phúc / Phuchello
+[phuchello@noc-uit-01 ~]$ focus
+Networking · AIoT · Research Engineering
+[phuchello@noc-uit-01 ~]$ status
+learning · building · researching
 ```
 
 [![GitHub](https://img.shields.io/badge/GitHub-Phuchello-00E5FF?style=flat-square&logo=github&logoColor=070B14)](https://github.com/Phuchello) [![LinkedIn](https://img.shields.io/badge/LinkedIn-phucvopro-38BDF8?style=flat-square&logo=linkedin&logoColor=070B14)](https://www.linkedin.com/in/phucvopro/)

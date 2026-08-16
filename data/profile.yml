@@ -34,10 +34,15 @@ current_trajectory:
   - title: "Edge Telemetry Pipelines"
     desc: "Experimenting with ESP32 sensor nodes transmitting structured telemetry via MQTT to containerized services."
 
-telemetry_ping:
-  command: "ping -c 1 vntrphuc.network"
-  response: "64 bytes from uit-node-01: icmp_seq=1 ttl=64 time=0.038 ms"
-  status_note: "0% packet loss | systems operational | open to research collaboration"
+terminal_status:
+  prompt: "[phuchello@noc-uit-01 ~]$"
+  entries:
+    - command: "whoami"
+      response: "Võ Trọng Phúc / Phuchello"
+    - command: "focus"
+      response: "Networking · AIoT · Research Engineering"
+    - command: "status"
+      response: "learning · building · researching"
 
 social:
   - label: "GitHub"

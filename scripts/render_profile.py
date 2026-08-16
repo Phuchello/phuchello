@@ -168,12 +168,19 @@ def format_current_trajectory(profile_data: Dict[str, Any]) -> str:
 
 
 def format_connect_block(profile_data: Dict[str, Any]) -> str:
-    ping_info = profile_data.get("telemetry_ping", {})
+    terminal_status = profile_data.get("terminal_status", {})
     social_links = profile_data.get("social", [])
 
-    cmd = ping_info.get("command", "ping -c 1 vntrphuc.network")
-    resp = ping_info.get("response", "64 bytes from uit-node-01: icmp_seq=1 ttl=64 time=0.038 ms")
-    note = ping_info.get("status_note", "0% packet loss | systems operational | open to research collaboration")
+    prompt = terminal_status.get("prompt", "[phuchello@noc-uit-01 ~]$")
+    entries = terminal_status.get("entries", [])
+    terminal_lines = []
+    for entry in entries:
+        command = entry.get("command", "status")
+        response = entry.get("response", "learning · building · researching")
+        terminal_lines.extend([f"{prompt} {command}", response])
+    if not terminal_lines:
+        terminal_lines = [f"{prompt} status", "learning · building · researching"]
+    terminal_output = "\n".join(terminal_lines)
 
     badges = []
     for s in social_links:
@@ -190,9 +197,7 @@ def format_connect_block(profile_data: Dict[str, Any]) -> str:
     return f"""<div align="center">
 
 ```text
-[phuchello@noc-uit-01 ~]$ {cmd}
-{resp}
---- status: {note} ---
+{terminal_output}
 ```
 
 {badge_line}
