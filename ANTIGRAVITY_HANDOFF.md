@@ -9,7 +9,7 @@ Key revisions & accomplishments:
 - **Three-Tier Capability Matrix**: Technical skills in `data/stack.yml` explicitly indicate maturity (`Demonstrated`, `Practicing`, `Exploring`) across 5 system layers.
 - **Navigation-Oriented Project Cards**: Project descriptions in `data/projects.yml` are concise and direct visitors to repositories and documentation without marketing fluff.
 - **Custom NOC Visuals**: Vector assets (`assets/network-banner.svg` and `assets/topology.svg`) using a restrained dark palette (`#070B14`, `#00E5FF`, `#38BDF8`, `#22C55E`).
-- **Zero-Dependency Python Generator**: `scripts/render_profile.py` includes a native parser for zero-friction local and CI execution with `--check` drift protection.
+- **Zero-Dependency Python Generator & CI Runner**: `scripts/render_profile.py` and `scripts/ci_test.py` execute cleanly in CI and locally without third-party dependencies.
 
 ---
 
@@ -30,6 +30,7 @@ Phuchello/
 │   └── stack.yml                      # System-layered technical capabilities with maturity tiers
 ├── scripts/
 │   ├── render_profile.py              # Zero-dependency Python renderer & validator
+│   ├── ci_test.py                     # Self-contained CI validation suite
 │   └── test_profile.ps1               # Local PowerShell validation suite
 └── .github/
     └── workflows/
@@ -73,7 +74,8 @@ powershell -ExecutionPolicy Bypass -File .\scripts\test_profile.ps1
 6. `assets/network-banner.svg`
 7. `assets/topology.svg`
 8. `scripts/render_profile.py`
-9. `.github/workflows/profile-check.yml`
+9. `scripts/ci_test.py`
+10. `.github/workflows/profile-check.yml`
 
 ---
 

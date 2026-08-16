@@ -27,6 +27,7 @@ $requiredFiles = @(
     "data/projects.yml",
     "data/stack.yml",
     "scripts/render_profile.py",
+    "scripts/ci_test.py",
     ".github/workflows/profile-check.yml"
 )
 
