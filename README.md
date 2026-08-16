@@ -13,14 +13,14 @@
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│ NOC CONSOLE :: PHUCHELLO.NET                               SYS_STATE: ONLINE│
+│ NOC CONSOLE :: PHUCHELLO.NET                              SYS_STATE: ONLINE│
 ├─────────────────────────────────────────────────────────────────────────────┤
-│ IDENTITY    : Võ Trọng Phúc (Phuchello)                                     │
-│ ROLE        : Network Engineering · AIoT · Research Systems                 │
-│ AFFILIATION : University of Information Technology — VNU-HCM (UIT)          │
-│ LOCATION    : Ho Chi Minh City, Vietnam                                     │
-│ MISSION     : Building intelligent systems where networks, edge devices,    │
-│               and AI meet.                                                  │
+│ IDENTITY    : Võ Trọng Phúc (Phuchello)                                   │
+│ ROLE        : Network Engineering · AIoT · Research Systems               │
+│ AFFILIATION : University of Information Technology — VNU-HCM (UIT)        │
+│ LOCATION    : Ho Chi Minh City, Vietnam                                   │
+│ MISSION     : Building intelligent systems where networks, edge devices,  │
+│               and AI meet.                                                │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
