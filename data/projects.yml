@@ -1,0 +1,72 @@
+﻿# Phuchello Featured & Public Projects Registry
+# The renderer parses this file to generate the Featured Systems section deterministically.
+
+projects:
+  - name: "Intel OS (NCKH)"
+    repo: "Phuchello/NCKH"
+    category: "Research Intelligence & Systems"
+    tagline: "A personal scientific intelligence platform turning massive literature into provenance-aware research memory"
+    description: >
+      A research-engineering platform built around an Intelligence Lake, Personal Research Memory,
+      and Research Opportunity Memory. Engineered with a modular monolith architecture, async HTTP ingestion
+      pipelines for academic sources (arXiv, Crossref, OpenAlex, Semantic Scholar), conservative multi-provider
+      reconciliation, and PostgreSQL pgvector embeddings.
+    tech:
+      - Python 3.12
+      - FastAPI (Async)
+      - PostgreSQL 16 + pgvector
+      - SQLAlchemy 2.x / asyncpg
+      - Alembic Migrations
+      - Docker Compose
+    featured: true
+    status: "Active (G2 Ingestion Review)"
+    priority: 1
+    links:
+      repository: "https://github.com/Phuchello/NCKH"
+      docs: "https://github.com/Phuchello/NCKH/blob/main/docs/PUBLIC_PROGRESS.md"
+
+  - name: "NT106 Network Programming Handbook"
+    repo: "Phuchello/NT106_UIT_HANDBOOK"
+    category: "Network Engineering & Observability"
+    tagline: "Comprehensive systems engineering handbook covering socket programming, application protocols, and packet sniffing"
+    description: >
+      An in-depth 18-chapter practical and theoretical reference for Network Programming (NT106) at UIT.
+      Implements end-to-end socket architectures (TCP stream framing, UDP datagrams, multi-client servers),
+      application layer protocols (HTTP REST, SMTP/POP3/IMAP, FTP), promiscuous RAW socket packet sniffers,
+      and Wireshark filter dissection.
+    tech:
+      - TCP / UDP Sockets
+      - RAW Sockets (Promiscuous)
+      - Wireshark Analysis
+      - HTTP / REST APIs
+      - Multithreaded I/O
+      - AES-256 / SHA-256
+    featured: true
+    status: "Completed / Reference"
+    priority: 2
+    links:
+      repository: "https://github.com/Phuchello/NT106_UIT_HANDBOOK"
+      web_view: "https://github.com/Phuchello/NT106_UIT_HANDBOOK/blob/main/NT106_CamNang_LapTrinhMang_UIT_VoTrongPhuc_PRECODEX.pdf"
+
+  - name: "DSA Comprehensive Handbook"
+    repo: "Phuchello/DSA_UIT_HANDBOOK"
+    category: "Algorithms & Systems Foundations"
+    tagline: "Pedagogical data structures and algorithms reference with dry-run tables and asymptotic proofs"
+    description: >
+      A rigorous 16-chapter engineering handbook covering algorithmic complexity (Big-O, Omega, Theta),
+      10 sorting algorithms with memory/stability analysis, pointer-based data structures (BST, AVL trees,
+      B-Trees, Min/Max Heaps), collision-resolved hash tables, and graph traversal/shortest path algorithms.
+    tech:
+      - C++ / STL
+      - Tree Algorithms (AVL, B-Tree)
+      - Graph Algorithms (Dijkstra, BFS/DFS)
+      - Asymptotic Proofs
+      - Dry-Run Tracing
+      - KaTeX Math
+    featured: true
+    status: "Completed / Reference"
+    priority: 3
+    links:
+      repository: "https://github.com/Phuchello/DSA_UIT_HANDBOOK"
+      web_view: "https://phuchello.github.io/DSA_UIT_HANDBOOK/"
+

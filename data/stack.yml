@@ -1,0 +1,70 @@
+# Technical Capabilities Grouped Strictly by System Layer
+# This architecture prevents unstructured badge clutter and emphasizes technical discipline.
+
+layers:
+  - name: "NETWORKING"
+    description: "Transport layer protocols, socket programming, and packet analysis"
+    icon: "NETWORK"
+    items:
+      - name: "TCP/IP & UDP"
+        detail: "Stream framing, datagram boundaries, 3-way handshake mechanics"
+      - name: "Socket Programming"
+        detail: "Client-server architecture, non-blocking I/O, multi-client concurrency"
+      - name: "Application Protocols"
+        detail: "HTTP/1.1, RESTful APIs, SMTP, POP3, IMAP, FTP"
+      - name: "Packet Observability"
+        detail: "Wireshark dissection, display filters, RAW socket packet capture"
+      - name: "Network Security"
+        detail: "AES-256 payload encryption, SHA-256 integrity hashing, basic TLS/SSL concepts"
+
+  - name: "EDGE & AIoT"
+    description: "Physical sensing, microcontroller interfacing, and distributed telemetry"
+    icon: "EDGE"
+    items:
+      - name: "ESP32 & Microcontrollers"
+        detail: "Hardware GPIO control, sensor polling, serial communication"
+      - name: "MQTT Protocol"
+        detail: "Lightweight pub/sub messaging, QoS levels, edge telemetry broker"
+      - name: "Sensors & Peripherals"
+        detail: "Analog/digital data acquisition, environment telemetry"
+      - name: "Edge Computing (Exploring)"
+        detail: "Local signal filtering, lightweight edge inference, gateway routing"
+
+  - name: "SYSTEMS & DATA CORE"
+    description: "Operating system primitives, data engines, and foundational tooling"
+    icon: "SYSTEMS"
+    items:
+      - name: "Linux / POSIX"
+        detail: "Shell scripting, process management, file I/O streams"
+      - name: "PostgreSQL 16"
+        detail: "Relational modeling, async drivers (asyncpg), ACID transactions, Alembic migrations"
+      - name: "Docker & Compose"
+        detail: "Multi-container services, reproducible local dev environments"
+      - name: "C / C++"
+        detail: "Manual memory allocation, pointer mechanics, algorithmic optimization"
+      - name: "Git & Version Control"
+        detail: "Deterministic branch workflows, modular repo management"
+
+  - name: "CLOUD & INFRASTRUCTURE"
+    description: "Deployment environments, CI/CD automation, and service orchestration"
+    icon: "CLOUD"
+    items:
+      - name: "Container Orchestration"
+        detail: "Docker Compose service meshes, volume management, health checks"
+      - name: "CI/CD Automation"
+        detail: "GitHub Actions workflows, automated testing, migration checks"
+      - name: "Async Service Design"
+        detail: "Asynchronous task execution, retry/backoff policies, rate limiting"
+
+  - name: "INTELLIGENCE & RESEARCH"
+    description: "Scientific data ingestion, vector search, and provenance engineering"
+    icon: "INTELLIGENCE"
+    items:
+      - name: "Python 3.12 Ecosystem"
+        detail: "FastAPI async, Pydantic v2 validation, SQLAlchemy 2.0 async ORM"
+      - name: "Vector Search (pgvector)"
+        detail: "HNSW / IVFFlat indexing, similarity search, hybrid retrieval"
+      - name: "Scientific Ingestion"
+        detail: "Metadata pipelines for arXiv, Crossref, OpenAlex, Semantic Scholar"
+      - name: "Provenance Architecture"
+        detail: "Durable evidence-to-claim lineage, idempotent deduplication"

@@ -1,0 +1,37 @@
+# Phuchello Profile Configuration
+# Identity and high-level positioning
+
+identity:
+  name: "Võ Trọng Phúc"
+  handle: "Phuchello"
+  role: "Network Engineering · AIoT · Research Systems"
+  institution: "University of Information Technology — VNU-HCM (UIT)"
+  location: "Vietnam"
+  tagline: "Building intelligent systems where networks, edge devices, and AI meet."
+
+overview:
+  summary: >
+    Undergraduate researcher and systems engineering student at UIT (VNU-HCM),
+    working at the intersection of network engineering, edge devices (AIoT),
+    and research intelligence systems. Focused on building deterministic,
+    provenance-aware architectures from bare-metal protocols to cloud databases.
+  focus_areas:
+    - title: "Network Systems & Protocols"
+      desc: "Socket programming, TCP/UDP transport mechanics, HTTP APIs, and packet-level inspection."
+    - title: "Edge & AIoT Pipelines"
+      desc: "Microcontroller interfacing (ESP32), MQTT pub/sub streams, and edge telemetry collection."
+    - title: "Research Intelligence Infrastructure"
+      desc: "Provenance-first storage, PostgreSQL + pgvector vector engines, and automated scientific ingestion."
+
+terminal_status:
+  node: "NOC-HCM-NODE-01"
+  state: "ONLINE // ACTIVE RESEARCH"
+  latency: "< 1ms (local loopback)"
+  active_subsystems:
+    - "Intel OS / Ingestion Pipeline (G2 Review)"
+    - "Network Protocol Analysis & Observability"
+    - "Edge Sensing & Telemetry Labs"
+
+social:
+  github: "https://github.com/Phuchello"
+  linkedin: "https://www.linkedin.com/in/phucvopro/"

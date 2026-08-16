@@ -1,0 +1,77 @@
+name: Profile README & Schema Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-profile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify Required File Hierarchy
+        run: |
+          echo "=== Checking Required Files ==="
+          for file in \
+            README.md \
+            README.template.md \
+            PROJECT_STATE.md \
+            TODO.md \
+            assets/network-banner.svg \
+            assets/topology.svg \
+            data/profile.yml \
+            data/projects.yml \
+            data/stack.yml \
+            scripts/render_profile.py
+          do
+            if [ ! -f "$file" ]; then
+              echo "::error file=$file::Missing required repository file: $file"
+              exit 1
+            fi
+            echo "[OK] Found $file"
+          done
+
+      - name: Verify README is in Sync (No Drift)
+        run: |
+          echo "=== Verifying Rendered Output Sync ==="
+          python scripts/render_profile.py --check
+
+      - name: Test Project Addition Verification
+        run: |
+          echo "=== Testing Dynamic Project Injection ==="
+          cp data/projects.yml data/projects.yml.bak
+          cat << 'EOF' >> data/projects.yml
+
+  - name: "AIoT Edge Lab (Test Entry)"
+    repo: "Phuchello/aiot-edge-lab-test"
+    category: "AIoT Systems"
+    tagline: "Deterministic test entry to verify renderer resilience"
+    description: "Automated test artifact for verifying priority ordering and data ingestion."
+    tech:
+      - ESP32
+      - MQTT
+      - Python
+    featured: true
+    status: "Active"
+    priority: 99
+    links:
+      repository: "https://github.com/Phuchello/aiot-edge-lab-test"
+EOF
+          python scripts/render_profile.py --output README.test.md
+          if ! grep -q "AIoT Edge Lab (Test Entry)" README.test.md; then
+            echo "::error::Renderer failed to include dynamic test project"
+            exit 1
+          fi
+          rm README.test.md
+          mv data/projects.yml.bak data/projects.yml
+          echo "[OK] Dynamic project injection test passed successfully."
