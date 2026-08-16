@@ -15,10 +15,10 @@ layers:
       - name: "Application Protocols"
         detail: "HTTP/1.1, REST APIs, SMTP, POP3, IMAP, FTP"
         level: "Demonstrated"
-      - name: "Packet Observability"
+      - name: "Packet Analysis & Diagnostics"
         detail: "Packet analysis with Wireshark, display filters, RAW socket packet capture"
         level: "Demonstrated"
-      - name: "Network Security Basics"
+      - name: "Security Fundamentals"
         detail: "AES-256 payload encryption, SHA-256 integrity hashing"
         level: "Demonstrated"
 
@@ -59,7 +59,7 @@ layers:
         detail: "Branching, version control, and repository workflows"
         level: "Practicing"
 
-  - name: "CLOUD & INFRASTRUCTURE"
+  - name: "DEVOPS & INFRASTRUCTURE"
     description: "Deployment environments, CI/CD automation, and async service design"
     icon: "CLOUD"
     items:
@@ -89,3 +89,13 @@ layers:
       - name: "Provenance Modeling"
         detail: "Durable evidence-to-claim lineage, idempotent record reconciliation"
         level: "Demonstrated"
+
+public_summary:
+  - area: "Networking"
+    tools: "TCP/IP · UDP · Sockets · HTTP · Wireshark"
+  - area: "Edge / AIoT"
+    tools: "ESP32 · MQTT · Sensors · Telemetry"
+  - area: "Systems"
+    tools: "Linux · Docker · PostgreSQL · Git"
+  - area: "Research / Data"
+    tools: "Python · FastAPI · pgvector · Provenance"

@@ -25,12 +25,9 @@ def test_file_hierarchy():
     required_files = [
         "README.md",
         "README.template.md",
-        "PROJECT_STATE.md",
-        "TODO.md",
-        "ANTIGRAVITY_HANDOFF.md",
         "requirements.txt",
-        "assets/network-banner.svg",
-        "assets/topology.svg",
+        "assets/network-banner.png",
+        "assets/topology.png",
         "data/profile.yml",
         "data/projects.yml",
         "data/stack.yml",
@@ -42,17 +39,14 @@ def test_file_hierarchy():
     print("  [OK] All required files exist.")
 
 
-def test_svg_assets():
-    print("[2/5] Validating SVG vector integrity...")
-    svgs = ["assets/network-banner.svg", "assets/topology.svg"]
-    for svg_rel in svgs:
-        svg_path = BASE_DIR / svg_rel
-        content = svg_path.read_text(encoding="utf-8")
-        if "<svg" not in content or "</svg>" not in content or "viewBox=" not in content:
-            raise ValueError(f"Malformed SVG structure in: {svg_rel}")
-        if "<script" in content or "javascript:" in content:
-            raise SecurityError(f"Prohibited script tag detected in: {svg_rel}")
-        print(f"  [OK] {svg_rel} is structurally valid and sanitized.")
+def test_visual_assets():
+    print("[2/5] Validating approved PNG assets...")
+    pngs = ["assets/network-banner.png", "assets/topology.png"]
+    png_signature = b"\x89PNG\r\n\x1a\n"
+    for png_rel in pngs:
+        if not (BASE_DIR / png_rel).read_bytes().startswith(png_signature):
+            raise ValueError(f"Invalid PNG signature: {png_rel}")
+        print(f"  [OK] {png_rel} is a valid PNG asset.")
 
 
 def test_render_check():
@@ -79,8 +73,11 @@ def test_profile_reactivity():
     shutil.copy(profile_path, bak_path)
     try:
         orig_text = profile_path.read_text(encoding="utf-8")
-        test_marker = "TEST_NOC_LOCATION_CI_XYZ"
-        modified_text = orig_text.replace("Ho Chi Minh City, Vietnam", test_marker)
+        test_marker = "TEST_PROFILE_SUMMARY_CI_XYZ"
+        modified_text = orig_text.replace(
+            "UIT undergraduate focused on networking and AIoT, with current work spanning packet analysis, edge telemetry, and research-data systems.",
+            test_marker,
+        )
         profile_path.write_text(modified_text, encoding="utf-8")
 
         res = subprocess.run(
@@ -94,7 +91,7 @@ def test_profile_reactivity():
 
         output_text = test_readme.read_text(encoding="utf-8")
         if test_marker not in output_text:
-            raise AssertionError("Renderer failed to reflect profile.yml location changes into output markdown.")
+            raise AssertionError("Renderer failed to reflect profile.yml summary changes into output markdown.")
         print("  [OK] profile.yml data changes propagate directly to rendered README.")
     finally:
         if test_readme.exists():
@@ -157,7 +154,7 @@ def main():
     print("========================================")
     try:
         test_file_hierarchy()
-        test_svg_assets()
+        test_visual_assets()
         test_render_check()
         test_profile_reactivity()
         test_projects_reactivity()

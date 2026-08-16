@@ -1,4 +1,4 @@
-﻿# Phuchello Profile Configuration
+# Phuchello Profile Configuration
 # Source of truth for identity, overview, focus areas, current trajectory, and connect links.
 
 identity:
@@ -9,30 +9,23 @@ identity:
   location: "Ho Chi Minh City, Vietnam"
   tagline: "Building intelligent systems where networks, edge devices, and AI meet."
 
-terminal:
-  title: "PHUCHELLO.NET :: ENGINEERING PROFILE"
-  sys_state: "STATUS: LEARNING · BUILDING · RESEARCHING"
-
 overview:
-  summary: >
-    Undergraduate student at UIT (VNU-HCM) working on research-oriented systems.
-    Interested in how networked devices, backend services, and research data
-    can work together reliably.
+  summary: "UIT undergraduate focused on networking and AIoT, with current work spanning packet analysis, edge telemetry, and research-data systems."
   focus_areas:
-    - title: "Network Engineering & Observability"
-      desc: "Socket programming (TCP/UDP), application-layer protocols (HTTP/REST, SMTP, FTP), RAW socket sniffing, and packet analysis with Wireshark."
+    - title: "Networking & Observability"
+      desc: "TCP/UDP socket programming, application protocols, RAW socket capture, and packet analysis with Wireshark."
     - title: "Edge Systems & AIoT"
-      desc: "Microcontroller interfacing (ESP32), sensor telemetry streams, and lightweight MQTT pub/sub messaging."
-    - title: "Research Intelligence & Data Systems"
-      desc: "Provenance-first data modeling, asynchronous academic metadata ingestion (arXiv, Crossref, OpenAlex, Semantic Scholar), and vector search with pgvector."
+      desc: "ESP32 sensor nodes, MQTT telemetry, and lightweight edge-to-service data flows."
+    - title: "Research Data & Intelligence"
+      desc: "Academic metadata ingestion, provenance-aware data modeling, PostgreSQL/pgvector, and retrieval workflows."
 
 current_trajectory:
-  - title: "Intel OS (NCKH) G2 Ingestion Review"
-    desc: "Refining multi-provider academic metadata reconciliation, idempotent database upserts, and resilient async HTTP rate-limiting."
-  - title: "Network Observability & Protocols"
-    desc: "Deepening packet analysis techniques, custom protocol dissection, and socket concurrency models."
-  - title: "Edge Telemetry Pipelines"
-    desc: "Experimenting with ESP32 sensor nodes transmitting structured telemetry via MQTT to containerized services."
+  - title: "Intel OS"
+    desc: "Improving metadata ingestion, source reconciliation, and research retrieval workflows."
+  - title: "Networking & Protocols"
+    desc: "Deepening packet analysis, protocol behavior, and concurrent socket programming."
+  - title: "Edge Telemetry"
+    desc: "Experimenting with ESP32 sensor nodes and MQTT-based telemetry pipelines."
 
 terminal_status:
   prompt: "[phuchello@workspace ~]$"
@@ -48,12 +41,13 @@ social:
   - label: "GitHub"
     username: "Phuchello"
     url: "https://github.com/Phuchello"
-    color: "00E5FF"
+    color: "315F57"
     logo: "github"
+    logo_color: "F2F1ED"
   - label: "LinkedIn"
     username: "phucvopro"
     url: "https://www.linkedin.com/in/phucvopro/"
-    color: "38BDF8"
+    color: "5A847C"
     logo: "linkedin"
-
+    logo_color: "F2F1ED"
 

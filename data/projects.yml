@@ -1,15 +1,14 @@
-﻿# Phuchello Featured & Public Projects Registry
+# Phuchello Featured & Public Projects Registry
 # The renderer parses this file to generate the Featured Systems section deterministically.
 
 projects:
   - name: "Intel OS (NCKH)"
     repo: "Phuchello/NCKH"
     category: "Research Intelligence & Systems"
-    tagline: "A personal research intelligence platform organizing scientific literature into structured research memory"
+    tagline: "A personal system for collecting, reconciling, and retrieving research literature."
     description: >
-      Modular backend platform featuring async HTTP ingestion pipelines for academic metadata
-      (arXiv, Crossref, OpenAlex, Semantic Scholar), conservative multi-source reconciliation,
-      and PostgreSQL vector storage with pgvector.
+      Built around asynchronous metadata ingestion from arXiv, Crossref, OpenAlex, and Semantic Scholar,
+      with PostgreSQL/pgvector for storage and retrieval.
     tech:
       - Python 3.12
       - FastAPI (Async)
@@ -18,7 +17,7 @@ projects:
       - Alembic Migrations
       - Docker Compose
     featured: true
-    status: "Active (G2 Ingestion Review)"
+    status: "Active"
     priority: 1
     links:
       repository: "https://github.com/Phuchello/NCKH"
@@ -67,4 +66,3 @@ projects:
     links:
       repository: "https://github.com/Phuchello/DSA_UIT_HANDBOOK"
       web_view: "https://phuchello.github.io/DSA_UIT_HANDBOOK/"
-

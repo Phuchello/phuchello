@@ -11,7 +11,6 @@ Single canonical YAML interpretation ensures 100% determinism between local and 
 import sys
 import os
 import argparse
-import textwrap
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 
@@ -63,36 +62,6 @@ def validate_projects(projects: List[Dict[str, Any]]) -> None:
             raise ValueError(f"Project '{p['name']}' must contain a non-empty list for 'tech'.")
 
 
-def format_terminal_header(profile_data: Dict[str, Any]) -> str:
-    identity = profile_data.get("identity", {})
-    terminal = profile_data.get("terminal", {})
-
-    title = terminal.get("title", "NOC CONSOLE :: PHUCHELLO.NET")
-    sys_state = terminal.get("sys_state", "SYS_STATE: ONLINE")
-
-    name = identity.get("name", "")
-    handle = identity.get("handle", "")
-    role = identity.get("role", "")
-    institution = identity.get("institution", "")
-    location = identity.get("location", "")
-    tagline = identity.get("tagline", "")
-
-    def format_field(label: str, value: str) -> List[str]:
-        wrapped = textwrap.wrap(value, width=64) or [""]
-        return [f"{label:<12}{wrapped[0]}"] + [f"{'':<12}{line}" for line in wrapped[1:]]
-
-    lines = [title, sys_state, ""]
-    lines.extend(format_field("IDENTITY", f"{name} / {handle}"))
-    lines.extend(format_field("FOCUS", role))
-    lines.extend(format_field("AFFILIATION", institution))
-    lines.extend(format_field("LOCATION", location))
-    lines.append("")
-    lines.extend(format_field("MISSION", tagline))
-
-    terminal_output = "\n".join(lines)
-    return f"```text\n{terminal_output}\n```"
-
-
 def format_overview(profile_data: Dict[str, Any]) -> str:
     overview = profile_data.get("overview", {})
     summary = overview.get("summary", "").strip()
@@ -129,15 +98,15 @@ def format_connect_block(profile_data: Dict[str, Any]) -> str:
     terminal_status = profile_data.get("terminal_status", {})
     social_links = profile_data.get("social", [])
 
-    prompt = terminal_status.get("prompt", "[phuchello@noc-uit-01 ~]$")
+    prompt = terminal_status.get("prompt", "[phuchello@workspace ~]$")
     entries = terminal_status.get("entries", [])
     terminal_lines = []
     for entry in entries:
         command = entry.get("command", "status")
-        response = entry.get("response", "learning · building · researching")
+        response = entry.get("response", "Networks → Edge Systems → Intelligence")
         terminal_lines.extend([f"{prompt} {command}", response])
     if not terminal_lines:
-        terminal_lines = [f"{prompt} status", "learning · building · researching"]
+        terminal_lines = [f"{prompt} direction", "Networks → Edge Systems → Intelligence"]
     terminal_output = "\n".join(terminal_lines)
 
     badges = []
@@ -147,7 +116,8 @@ def format_connect_block(profile_data: Dict[str, Any]) -> str:
         url = s.get("url", "")
         color = s.get("color", "00E5FF")
         logo = s.get("logo", "github")
-        badge = f"[![{label}](https://img.shields.io/badge/{label}-{username}-{color}?style=flat-square&logo={logo}&logoColor=070B14)]({url})"
+        logo_color = s.get("logo_color", "F2F1ED")
+        badge = f"[![{label}](https://img.shields.io/badge/{label}-{username}-{color}?style=flat-square&logo={logo}&logoColor={logo_color})]({url})"
         badges.append(badge)
 
     badge_line = " ".join(badges)
@@ -164,30 +134,14 @@ def format_connect_block(profile_data: Dict[str, Any]) -> str:
 
 
 def format_stack_markdown(stack_data: Dict[str, Any]) -> str:
-    layers = stack_data.get("layers", [])
-    if not layers:
+    summary = stack_data.get("public_summary", [])
+    if not summary:
         return "*No stack layers configured.*"
 
-    output = []
-    for layer in layers:
-        name = layer.get("name", "SYSTEM LAYER")
-        desc = layer.get("description", "")
-        items = layer.get("items", [])
-        
-        output.append(f"### `// LAYER :: {name}`")
-        if desc:
-            output.append(f"> *{desc}*")
-            output.append("")
-
-        output.append("| Capability | Level | Focus / Engineering Details |")
-        output.append("|---|---|---|")
-        for it in items:
-            it_name = it.get("name", "")
-            it_level = it.get("level", "Practicing")
-            it_detail = it.get("detail", "")
-            output.append(f"| **{it_name}** | `{it_level}` | {it_detail} |")
-        output.append("")
-    return "\n".join(output).strip()
+    output = ["| Area | Working with |", "|---|---|"]
+    for item in summary:
+        output.append(f"| **{item.get('area', 'Area')}** | {item.get('tools', '')} |")
+    return "\n".join(output)
 
 
 def format_projects_markdown(projects_data: Dict[str, Any]) -> str:
@@ -257,14 +211,13 @@ def render_profile(
     with open(template_path, "r", encoding="utf-8") as f:
         template = f.read()
 
-    terminal_block = format_terminal_header(profile_data)
+    rendered = template
     overview_block = format_overview(profile_data)
     stack_block = format_stack_markdown(stack_data)
     projects_block = format_projects_markdown(projects_data)
     trajectory_block = format_current_trajectory(profile_data)
     connect_block = format_connect_block(profile_data)
 
-    rendered = template.replace("{{TERMINAL_HEADER_BLOCK}}", terminal_block)
     rendered = rendered.replace("{{OVERVIEW_BLOCK}}", overview_block)
     rendered = rendered.replace("{{SYSTEM_STACK_BLOCK}}", stack_block)
     rendered = rendered.replace("{{FEATURED_PROJECTS_BLOCK}}", projects_block)

@@ -11,7 +11,7 @@
   <img src="assets/network-banner.png" alt="Phuchello Network Intelligence Banner" width="100%">
 </div>
 
-{{TERMINAL_HEADER_BLOCK}}
+**Võ Trọng Phúc** — UIT undergraduate focused on networking and AIoT, currently exploring packet-level systems, edge telemetry, and research-data infrastructure.
 
 ## // 01. FOCUS AREAS
 
@@ -20,9 +20,6 @@
 ---
 
 ## // 02. DIRECTION MAP
-
-Networking is the backbone. Edge systems bring it into the physical world.
-Intelligence is where I want to take it.
 
 <div align="center">
   <img src="assets/topology.png" alt="Phuchello Network Intelligence Direction Map" width="100%">

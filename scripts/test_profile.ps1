@@ -1,7 +1,7 @@
 <#
 .SYNOPSIS
   Local validation suite for Phuchello's GitHub Profile Repository.
-  Runs file integrity checks, data reactivity tests, template token verification, and SVG validation.
+  Runs file integrity checks, data reactivity tests, template token verification, and PNG validation.
 #>
 
 $ErrorActionPreference = "Stop"
@@ -18,12 +18,9 @@ Write-Host "`n[1/5] Checking required files..." -ForegroundColor Yellow
 $requiredFiles = @(
     "README.md",
     "README.template.md",
-    "PROJECT_STATE.md",
-    "TODO.md",
-    "ANTIGRAVITY_HANDOFF.md",
     "requirements.txt",
-    "assets/network-banner.svg",
-    "assets/topology.svg",
+    "assets/network-banner.png",
+    "assets/topology.png",
     "data/profile.yml",
     "data/projects.yml",
     "data/stack.yml",
@@ -40,17 +37,14 @@ foreach ($f in $requiredFiles) {
     }
 }
 
-# 2. SVG Asset Validation
-Write-Host "`n[2/5] Validating SVG asset integrity..." -ForegroundColor Yellow
-foreach ($svg in @("assets/network-banner.svg", "assets/topology.svg")) {
-    $content = Get-Content $svg -Raw -Encoding utf8
-    if (-not ($content -match "<svg" -and $content -match "viewBox=" -and $content -match "</svg>")) {
-        Write-Error "Malformed SVG file: $svg"
+# 2. PNG Asset Validation
+Write-Host "`n[2/5] Validating PNG asset integrity..." -ForegroundColor Yellow
+foreach ($png in @("assets/network-banner.png", "assets/topology.png")) {
+    $bytes = [System.IO.File]::ReadAllBytes((Join-Path $baseDir $png))
+    if ($bytes.Length -lt 8 -or [System.BitConverter]::ToString($bytes[0..7]) -ne "89-50-4E-47-0D-0A-1A-0A") {
+        Write-Error "Invalid PNG file: $png"
     }
-    if ($content -match "<script" -or $content -match "javascript:") {
-        Write-Error "Security violation: Embedded script found in $svg"
-    }
-    Write-Host "  [OK] $svg (Valid vector structure, no embedded scripts)" -ForegroundColor Green
+    Write-Host "  [OK] $png (Valid PNG signature)" -ForegroundColor Green
 }
 
 # 3. Data Schema & Core Flagship Checks
@@ -71,7 +65,6 @@ Write-Host "  [OK] Profile configuration structure verified." -ForegroundColor G
 Write-Host "`n[4/5] Verifying README template tokens..." -ForegroundColor Yellow
 $template = Get-Content "README.template.md" -Raw -Encoding utf8
 $requiredTokens = @(
-    "{{TERMINAL_HEADER_BLOCK}}",
     "{{OVERVIEW_BLOCK}}",
     "{{SYSTEM_STACK_BLOCK}}",
     "{{FEATURED_PROJECTS_BLOCK}}",
@@ -84,7 +77,7 @@ foreach ($token in $requiredTokens) {
         Write-Error "README.template.md missing required token: $token"
     }
 }
-Write-Host "  [OK] All 6 data-driven tokens present in template." -ForegroundColor Green
+Write-Host "  [OK] All 5 data-driven tokens present in template." -ForegroundColor Green
 
 # 5. Data Reactivity & Synchronization Tests
 Write-Host "`n[5/5] Testing data-driven reactivity..." -ForegroundColor Yellow
@@ -93,15 +86,15 @@ Write-Host "`n[5/5] Testing data-driven reactivity..." -ForegroundColor Yellow
 $origProfile = Get-Content "data/profile.yml" -Raw -Encoding utf8
 $testMarker = "TEST_LOC_NODE_99"
 $testProfile = $origProfile.Replace("Ho Chi Minh City, Vietnam", $testMarker)
-Set-Content "data/profile.yml" $testProfile -Encoding utf8
+[System.IO.File]::WriteAllText((Join-Path $baseDir "data/profile.yml"), $testProfile, [System.Text.UTF8Encoding]::new($false))
 
 $testReadme = Get-Content "README.template.md" -Raw -Encoding utf8
 if (-not ($testProfile.Contains($testMarker))) {
-    Set-Content "data/profile.yml" $origProfile -Encoding utf8
+    [System.IO.File]::WriteAllText((Join-Path $baseDir "data/profile.yml"), $origProfile, [System.Text.UTF8Encoding]::new($false))
     Write-Error "Failed to inject test location in profile.yml"
 }
 # Revert profile.yml
-Set-Content "data/profile.yml" $origProfile -Encoding utf8
+[System.IO.File]::WriteAllText((Join-Path $baseDir "data/profile.yml"), $origProfile, [System.Text.UTF8Encoding]::new($false))
 Write-Host "  [OK] profile.yml reactivity test verified." -ForegroundColor Green
 
 # Test B: projects.yml reactivity (dummy project test)
@@ -121,9 +114,9 @@ $dummyEntry = @"
     links:
       repository: "https://github.com/Phuchello/temp-test-lab"
 "@
-Set-Content "data/projects.yml" ($origProjects + $dummyEntry) -Encoding utf8
+[System.IO.File]::WriteAllText((Join-Path $baseDir "data/projects.yml"), ($origProjects + $dummyEntry), [System.Text.UTF8Encoding]::new($false))
 # Revert projects.yml
-Set-Content "data/projects.yml" $origProjects -Encoding utf8
+[System.IO.File]::WriteAllText((Join-Path $baseDir "data/projects.yml"), $origProjects, [System.Text.UTF8Encoding]::new($false))
 Write-Host "  [OK] projects.yml reactivity test verified." -ForegroundColor Green
 
 Write-Host "`n========================================" -ForegroundColor Green

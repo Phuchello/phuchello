@@ -11,33 +11,19 @@
   <img src="assets/network-banner.png" alt="Phuchello Network Intelligence Banner" width="100%">
 </div>
 
-```text
-PHUCHELLO.NET :: ENGINEERING PROFILE
-STATUS: LEARNING · BUILDING · RESEARCHING
-
-IDENTITY    Võ Trọng Phúc / Phuchello
-FOCUS       Networking · AIoT · Research Engineering
-AFFILIATION University of Information Technology — VNU-HCM (UIT)
-LOCATION    Ho Chi Minh City, Vietnam
-
-MISSION     Building intelligent systems where networks, edge devices, and
-            AI meet.
-```
+**Võ Trọng Phúc** — UIT undergraduate focused on networking and AIoT, currently exploring packet-level systems, edge telemetry, and research-data infrastructure.
 
 ## // 01. FOCUS AREAS
 
-Undergraduate student at UIT (VNU-HCM) working on research-oriented systems. Interested in how networked devices, backend services, and research data can work together reliably.
+UIT undergraduate focused on networking and AIoT, with current work spanning packet analysis, edge telemetry, and research-data systems.
 
-* **Network Engineering & Observability** — Socket programming (TCP/UDP), application-layer protocols (HTTP/REST, SMTP, FTP), RAW socket sniffing, and packet analysis with Wireshark.
-* **Edge Systems & AIoT** — Microcontroller interfacing (ESP32), sensor telemetry streams, and lightweight MQTT pub/sub messaging.
-* **Research Intelligence & Data Systems** — Provenance-first data modeling, asynchronous academic metadata ingestion (arXiv, Crossref, OpenAlex, Semantic Scholar), and vector search with pgvector.
+* **Networking & Observability** — TCP/UDP socket programming, application protocols, RAW socket capture, and packet analysis with Wireshark.
+* **Edge Systems & AIoT** — ESP32 sensor nodes, MQTT telemetry, and lightweight edge-to-service data flows.
+* **Research Data & Intelligence** — Academic metadata ingestion, provenance-aware data modeling, PostgreSQL/pgvector, and retrieval workflows.
 
 ---
 
 ## // 02. DIRECTION MAP
-
-Networking is the backbone. Edge systems bring it into the physical world.
-Intelligence is where I want to take it.
 
 <div align="center">
   <img src="assets/topology.png" alt="Phuchello Network Intelligence Direction Map" width="100%">
@@ -47,67 +33,23 @@ Intelligence is where I want to take it.
 
 ## // 03. TECHNICAL STACK
 
-### `// LAYER :: NETWORKING`
-> *Transport protocols, socket programming, and packet inspection*
-
-| Capability | Level | Focus / Engineering Details |
-|---|---|---|
-| **TCP/IP & UDP** | `Demonstrated` | Stream framing, datagram boundaries, 3-way handshake mechanics |
-| **Socket Programming** | `Demonstrated` | Client-server architectures, non-blocking I/O, multi-client concurrency |
-| **Application Protocols** | `Demonstrated` | HTTP/1.1, REST APIs, SMTP, POP3, IMAP, FTP |
-| **Packet Observability** | `Demonstrated` | Packet analysis with Wireshark, display filters, RAW socket packet capture |
-| **Network Security Basics** | `Demonstrated` | AES-256 payload encryption, SHA-256 integrity hashing |
-
-### `// LAYER :: EDGE & AIoT`
-> *Physical sensing, microcontroller interfacing, and distributed telemetry*
-
-| Capability | Level | Focus / Engineering Details |
-|---|---|---|
-| **ESP32 & Microcontrollers** | `Practicing` | Hardware GPIO control, sensor polling, serial communication |
-| **MQTT Protocol** | `Practicing` | Lightweight pub/sub messaging, QoS levels, telemetry transport |
-| **Sensors & Peripherals** | `Practicing` | Analog/digital data acquisition, environment telemetry |
-| **Edge Telemetry Pipelines** | `Exploring` | Local data filtering, sensor dispatch to service gateways |
-
-### `// LAYER :: SYSTEMS & DATA CORE`
-> *Operating system primitives, data engines, and foundational tooling*
-
-| Capability | Level | Focus / Engineering Details |
-|---|---|---|
-| **Linux / POSIX** | `Practicing` | Shell scripting, process management, file I/O streams |
-| **PostgreSQL 16** | `Demonstrated` | Relational modeling, async drivers (asyncpg), ACID transactions, Alembic migrations |
-| **Docker & Compose** | `Practicing` | Multi-container service environments, reproducible local setups |
-| **C / C++** | `Demonstrated` | Manual memory allocation, pointer mechanics, algorithmic optimization |
-| **Git Workflows** | `Practicing` | Branching, version control, and repository workflows |
-
-### `// LAYER :: CLOUD & INFRASTRUCTURE`
-> *Deployment environments, CI/CD automation, and async service design*
-
-| Capability | Level | Focus / Engineering Details |
-|---|---|---|
-| **Multi-Container Services** | `Practicing` | Docker Compose service configuration, health checks, volume management |
-| **CI/CD Automation** | `Practicing` | GitHub Actions workflows, automated testing, schema verification |
-| **Async Service Design** | `Demonstrated` | Asynchronous task execution, retry/backoff policies, rate limiting |
-
-### `// LAYER :: INTELLIGENCE & RESEARCH`
-> *Scientific data ingestion, vector search, and provenance engineering*
-
-| Capability | Level | Focus / Engineering Details |
-|---|---|---|
-| **Python 3.12 Ecosystem** | `Demonstrated` | FastAPI async, Pydantic v2 validation, SQLAlchemy 2.0 async ORM |
-| **Vector Search** | `Demonstrated` | Vector search with pgvector, similarity retrieval |
-| **Scientific Ingestion** | `Demonstrated` | Metadata pipelines for arXiv, Crossref, OpenAlex, Semantic Scholar |
-| **Provenance Modeling** | `Demonstrated` | Durable evidence-to-claim lineage, idempotent record reconciliation |
+| Area | Working with |
+|---|---|
+| **Networking** | TCP/IP · UDP · Sockets · HTTP · Wireshark |
+| **Edge / AIoT** | ESP32 · MQTT · Sensors · Telemetry |
+| **Systems** | Linux · Docker · PostgreSQL · Git |
+| **Research / Data** | Python · FastAPI · pgvector · Provenance |
 
 ---
 
 ## // 04. SELECTED WORK
 
 ### [Intel OS (NCKH)](https://github.com/Phuchello/NCKH)
-**Category:** `Research Intelligence & Systems` &nbsp;|&nbsp; **Status:** `Active (G2 Ingestion Review)` &nbsp;|&nbsp; **Stack:** `Python 3.12` · `FastAPI (Async)` · `PostgreSQL 16 + pgvector` · `SQLAlchemy 2.x / asyncpg` · `Alembic Migrations` · `Docker Compose`
+**Category:** `Research Intelligence & Systems` &nbsp;|&nbsp; **Status:** `Active` &nbsp;|&nbsp; **Stack:** `Python 3.12` · `FastAPI (Async)` · `PostgreSQL 16 + pgvector` · `SQLAlchemy 2.x / asyncpg` · `Alembic Migrations` · `Docker Compose`
 
-> **A personal research intelligence platform organizing scientific literature into structured research memory**
+> **A personal system for collecting, reconciling, and retrieving research literature.**
 
-Modular backend platform featuring async HTTP ingestion pipelines for academic metadata (arXiv, Crossref, OpenAlex, Semantic Scholar), conservative multi-source reconciliation, and PostgreSQL vector storage with pgvector.
+Built around asynchronous metadata ingestion from arXiv, Crossref, OpenAlex, and Semantic Scholar, with PostgreSQL/pgvector for storage and retrieval.
 
 🔗 **Links:** [Repository](https://github.com/Phuchello/NCKH) · [Docs](https://github.com/Phuchello/NCKH/blob/main/docs/PUBLIC_PROGRESS.md)
 
@@ -137,9 +79,9 @@ Modular backend platform featuring async HTTP ingestion pipelines for academic m
 
 ## // 05. CURRENT DIRECTION
 
-* **Intel OS (NCKH) G2 Ingestion Review** — Refining multi-provider academic metadata reconciliation, idempotent database upserts, and resilient async HTTP rate-limiting.
-* **Network Observability & Protocols** — Deepening packet analysis techniques, custom protocol dissection, and socket concurrency models.
-* **Edge Telemetry Pipelines** — Experimenting with ESP32 sensor nodes transmitting structured telemetry via MQTT to containerized services.
+* **Intel OS** — Improving metadata ingestion, source reconciliation, and research retrieval workflows.
+* **Networking & Protocols** — Deepening packet analysis, protocol behavior, and concurrent socket programming.
+* **Edge Telemetry** — Experimenting with ESP32 sensor nodes and MQTT-based telemetry pipelines.
 
 ---
 
@@ -156,6 +98,6 @@ Networking · AIoT · Research Engineering
 Networks → Edge Systems → Intelligence
 ```
 
-[![GitHub](https://img.shields.io/badge/GitHub-Phuchello-00E5FF?style=flat-square&logo=github&logoColor=070B14)](https://github.com/Phuchello) [![LinkedIn](https://img.shields.io/badge/LinkedIn-phucvopro-38BDF8?style=flat-square&logo=linkedin&logoColor=070B14)](https://www.linkedin.com/in/phucvopro/)
+[![GitHub](https://img.shields.io/badge/GitHub-Phuchello-315F57?style=flat-square&logo=github&logoColor=F2F1ED)](https://github.com/Phuchello) [![LinkedIn](https://img.shields.io/badge/LinkedIn-phucvopro-5A847C?style=flat-square&logo=linkedin&logoColor=F2F1ED)](https://www.linkedin.com/in/phucvopro/)
 
 </div>
