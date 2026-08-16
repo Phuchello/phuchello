@@ -12,11 +12,11 @@
 </div>
 
 ```text
-NOC CONSOLE :: PHUCHELLO.NET
-SYS_STATE: ONLINE
+PHUCHELLO.NET :: ENGINEERING PROFILE
+STATUS: LEARNING · BUILDING · RESEARCHING
 
 IDENTITY    Võ Trọng Phúc / Phuchello
-FOCUS       Network Engineering · AIoT · Research Systems
+FOCUS       Networking · AIoT · Research Engineering
 AFFILIATION University of Information Technology — VNU-HCM (UIT)
 LOCATION    Ho Chi Minh City, Vietnam
 
@@ -24,7 +24,7 @@ MISSION     Building intelligent systems where networks, edge devices, and
             AI meet.
 ```
 
-## // 01. ENGINEERING & RESEARCH FOCUS
+## // 01. FOCUS AREAS
 
 Undergraduate student at UIT (VNU-HCM) working on research-oriented systems. Interested in how networked devices, backend services, and research data can work together reliably.
 
@@ -34,9 +34,10 @@ Undergraduate student at UIT (VNU-HCM) working on research-oriented systems. Int
 
 ---
 
-## // 02. SYSTEM ARCHITECTURE & RESEARCH TRAJECTORY
+## // 02. DIRECTION MAP
 
-A conceptual map of technical directions spanning physical sensing, network transport, data engineering, and personal research memory.
+Networking is the backbone. Edge systems bring it into the physical world.
+Intelligence is where I want to take it.
 
 <div align="center">
   <img src="assets/topology.png" alt="Phuchello Network Intelligence Direction Map" width="100%">
@@ -44,7 +45,7 @@ A conceptual map of technical directions spanning physical sensing, network tran
 
 ---
 
-## // 03. TECHNICAL CAPABILITIES BY SYSTEM LAYER
+## // 03. TECHNICAL STACK
 
 ### `// LAYER :: NETWORKING`
 > *Transport protocols, socket programming, and packet inspection*
@@ -99,7 +100,7 @@ A conceptual map of technical directions spanning physical sensing, network tran
 
 ---
 
-## // 04. FEATURED SYSTEMS & REPOSITORIES
+## // 04. SELECTED WORK
 
 ### [Intel OS (NCKH)](https://github.com/Phuchello/NCKH)
 **Category:** `Research Intelligence & Systems` &nbsp;|&nbsp; **Status:** `Active (G2 Ingestion Review)` &nbsp;|&nbsp; **Stack:** `Python 3.12` · `FastAPI (Async)` · `PostgreSQL 16 + pgvector` · `SQLAlchemy 2.x / asyncpg` · `Alembic Migrations` · `Docker Compose`
@@ -134,7 +135,7 @@ Modular backend platform featuring async HTTP ingestion pipelines for academic m
 
 ---
 
-## // 05. CURRENT RESEARCH & LEARNING TRAJECTORY
+## // 05. CURRENT DIRECTION
 
 * **Intel OS (NCKH) G2 Ingestion Review** — Refining multi-provider academic metadata reconciliation, idempotent database upserts, and resilient async HTTP rate-limiting.
 * **Network Observability & Protocols** — Deepening packet analysis techniques, custom protocol dissection, and socket concurrency models.
@@ -142,17 +143,17 @@ Modular backend platform featuring async HTTP ingestion pipelines for academic m
 
 ---
 
-## // 06. CONNECT & TELEMETRY
+## // 06. CONNECT
 
 <div align="center">
 
 ```text
-[phuchello@noc-uit-01 ~]$ whoami
+[phuchello@workspace ~]$ whoami
 Võ Trọng Phúc / Phuchello
-[phuchello@noc-uit-01 ~]$ focus
+[phuchello@workspace ~]$ focus
 Networking · AIoT · Research Engineering
-[phuchello@noc-uit-01 ~]$ status
-learning · building · researching
+[phuchello@workspace ~]$ direction
+Networks → Edge Systems → Intelligence
 ```
 
 [![GitHub](https://img.shields.io/badge/GitHub-Phuchello-00E5FF?style=flat-square&logo=github&logoColor=070B14)](https://github.com/Phuchello) [![LinkedIn](https://img.shields.io/badge/LinkedIn-phucvopro-38BDF8?style=flat-square&logo=linkedin&logoColor=070B14)](https://www.linkedin.com/in/phucvopro/)

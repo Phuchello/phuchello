@@ -13,15 +13,16 @@
 
 {{TERMINAL_HEADER_BLOCK}}
 
-## // 01. ENGINEERING & RESEARCH FOCUS
+## // 01. FOCUS AREAS
 
 {{OVERVIEW_BLOCK}}
 
 ---
 
-## // 02. SYSTEM ARCHITECTURE & RESEARCH TRAJECTORY
+## // 02. DIRECTION MAP
 
-A conceptual map of technical directions spanning physical sensing, network transport, data engineering, and personal research memory.
+Networking is the backbone. Edge systems bring it into the physical world.
+Intelligence is where I want to take it.
 
 <div align="center">
   <img src="assets/topology.png" alt="Phuchello Network Intelligence Direction Map" width="100%">
@@ -29,24 +30,24 @@ A conceptual map of technical directions spanning physical sensing, network tran
 
 ---
 
-## // 03. TECHNICAL CAPABILITIES BY SYSTEM LAYER
+## // 03. TECHNICAL STACK
 
 {{SYSTEM_STACK_BLOCK}}
 
 ---
 
-## // 04. FEATURED SYSTEMS & REPOSITORIES
+## // 04. SELECTED WORK
 
 {{FEATURED_PROJECTS_BLOCK}}
 
 ---
 
-## // 05. CURRENT RESEARCH & LEARNING TRAJECTORY
+## // 05. CURRENT DIRECTION
 
 {{CURRENT_TRAJECTORY_BLOCK}}
 
 ---
 
-## // 06. CONNECT & TELEMETRY
+## // 06. CONNECT
 
 {{CONNECT_BLOCK}}

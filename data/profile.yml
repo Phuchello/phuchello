@@ -4,14 +4,14 @@
 identity:
   name: "Võ Trọng Phúc"
   handle: "Phuchello"
-  role: "Network Engineering · AIoT · Research Systems"
+  role: "Networking · AIoT · Research Engineering"
   institution: "University of Information Technology — VNU-HCM (UIT)"
   location: "Ho Chi Minh City, Vietnam"
   tagline: "Building intelligent systems where networks, edge devices, and AI meet."
 
 terminal:
-  title: "NOC CONSOLE :: PHUCHELLO.NET"
-  sys_state: "SYS_STATE: ONLINE"
+  title: "PHUCHELLO.NET :: ENGINEERING PROFILE"
+  sys_state: "STATUS: LEARNING · BUILDING · RESEARCHING"
 
 overview:
   summary: >
@@ -35,14 +35,14 @@ current_trajectory:
     desc: "Experimenting with ESP32 sensor nodes transmitting structured telemetry via MQTT to containerized services."
 
 terminal_status:
-  prompt: "[phuchello@noc-uit-01 ~]$"
+  prompt: "[phuchello@workspace ~]$"
   entries:
     - command: "whoami"
       response: "Võ Trọng Phúc / Phuchello"
     - command: "focus"
       response: "Networking · AIoT · Research Engineering"
-    - command: "status"
-      response: "learning · building · researching"
+    - command: "direction"
+      response: "Networks → Edge Systems → Intelligence"
 
 social:
   - label: "GitHub"
