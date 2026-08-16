@@ -220,6 +220,19 @@ def load_yaml_file(filepath: Path) -> Any:
     return parse_simple_yaml(content)
 
 
+def validate_profile(profile: Dict[str, Any]) -> None:
+    if not isinstance(profile, dict):
+        raise ValueError("profile.yml root must be a dictionary.")
+    
+    identity = profile.get("identity", {})
+    for req in ["name", "handle", "role", "institution", "location", "tagline"]:
+        if req not in identity or not str(identity[req]).strip():
+            raise ValueError(f"profile.yml identity missing required field: '{req}'")
+
+    if "overview" not in profile or "summary" not in profile["overview"]:
+        raise ValueError("profile.yml missing overview.summary")
+
+
 def validate_projects(projects: List[Dict[str, Any]]) -> None:
     required_fields = ["name", "repo", "category", "tagline", "tech", "featured", "status"]
     seen_repos = set()
@@ -235,6 +248,144 @@ def validate_projects(projects: List[Dict[str, Any]]) -> None:
         seen_repos.add(repo)
         if not isinstance(p["tech"], list) or len(p["tech"]) == 0:
             raise ValueError(f"Project '{p['name']}' must contain a non-empty list for 'tech'.")
+
+
+def format_terminal_header(profile_data: Dict[str, Any]) -> str:
+    identity = profile_data.get("identity", {})
+    terminal = profile_data.get("terminal", {})
+
+    title = terminal.get("title", "NOC CONSOLE :: PHUCHELLO.NET")
+    sys_state = terminal.get("sys_state", "SYS_STATE: ONLINE")
+
+    name = identity.get("name", "")
+    handle = identity.get("handle", "")
+    role = identity.get("role", "")
+    institution = identity.get("institution", "")
+    location = identity.get("location", "")
+    tagline = identity.get("tagline", "")
+
+    # Target box content width
+    content_width = 75
+
+    header_space = content_width - len(title) - len(sys_state)
+    if header_space < 1:
+        header_line = f"│ {title} {sys_state}│"
+    else:
+        header_line = f"│ {title}{' ' * header_space}{sys_state}│"
+
+    def format_row(label: str, value: str) -> List[str]:
+        prefix = f"│ {label:<12}: "
+        avail = content_width - len(prefix) + 1  # room before right border
+        if len(value) <= avail:
+            return [f"{prefix}{value}{' ' * (avail - len(value))}│"]
+        # Split across lines cleanly
+        words = value.split(" ")
+        lines = []
+        cur_line = ""
+        for w in words:
+            if not cur_line:
+                cur_line = w
+            elif len(cur_line) + 1 + len(w) <= avail:
+                cur_line += " " + w
+            else:
+                lines.append(cur_line)
+                cur_line = w
+        if cur_line:
+            lines.append(cur_line)
+        
+        res = []
+        for i, l in enumerate(lines):
+            if i == 0:
+                res.append(f"{prefix}{l}{' ' * (avail - len(l))}│")
+            else:
+                indent_prefix = f"│ {' ' * 14}"
+                indent_avail = content_width - len(indent_prefix) + 1
+                res.append(f"{indent_prefix}{l}{' ' * (indent_avail - len(l))}│")
+        return res
+
+    top_border = f"┌{'─' * (content_width + 2)}┐"
+    mid_border = f"├{'─' * (content_width + 2)}┤"
+    bot_border = f"└{'─' * (content_width + 2)}┘"
+
+    rows = []
+    rows.append(top_border)
+    rows.append(header_line)
+    rows.append(mid_border)
+    
+    rows.extend(format_row("IDENTITY", f"{name} ({handle})"))
+    rows.extend(format_row("ROLE", role))
+    rows.extend(format_row("AFFILIATION", institution))
+    rows.extend(format_row("LOCATION", location))
+    rows.extend(format_row("MISSION", tagline))
+    rows.append(bot_border)
+
+    box_content = "\n".join(rows)
+    return f"```text\n{box_content}\n```"
+
+
+def format_overview(profile_data: Dict[str, Any]) -> str:
+    overview = profile_data.get("overview", {})
+    summary = overview.get("summary", "").strip()
+    focus_areas = overview.get("focus_areas", [])
+
+    lines = []
+    if summary:
+        lines.append(summary)
+        lines.append("")
+
+    for fa in focus_areas:
+        title = fa.get("title", "")
+        desc = fa.get("desc", "")
+        lines.append(f"* **{title}** — {desc}")
+
+    return "\n".join(lines).strip()
+
+
+def format_current_trajectory(profile_data: Dict[str, Any]) -> str:
+    trajectory = profile_data.get("current_trajectory", [])
+    if not trajectory:
+        return "*Continuous learning and systems exploration in progress.*"
+
+    lines = []
+    for item in trajectory:
+        title = item.get("title", "")
+        desc = item.get("desc", "")
+        lines.append(f"* **{title}** — {desc}")
+
+    return "\n".join(lines).strip()
+
+
+def format_connect_block(profile_data: Dict[str, Any]) -> str:
+    ping_info = profile_data.get("telemetry_ping", {})
+    social_links = profile_data.get("social", [])
+
+    cmd = ping_info.get("command", "ping -c 1 vntrphuc.network")
+    resp = ping_info.get("response", "64 bytes from uit-node-01: icmp_seq=1 ttl=64 time=0.038 ms")
+    note = ping_info.get("status_note", "0% packet loss | systems operational | open to research collaboration")
+
+    badges = []
+    for s in social_links:
+        label = s.get("label", "Link")
+        username = s.get("username", "")
+        url = s.get("url", "")
+        color = s.get("color", "00E5FF")
+        logo = s.get("logo", "github")
+        badge = f"[![{label}](https://img.shields.io/badge/{label}-{username}-{color}?style=flat-square&logo={logo}&logoColor=070B14)]({url})"
+        badges.append(badge)
+
+    badge_line = " ".join(badges)
+
+    return f"""<div align="center">
+
+```text
+[phuchello@noc-uit-01 ~]$ {cmd}
+{resp}
+--- status: {note} ---
+```
+
+{badge_line}
+
+</div>""".strip()
 
 
 def format_stack_markdown(stack_data: Dict[str, Any]) -> str:
@@ -253,12 +404,13 @@ def format_stack_markdown(stack_data: Dict[str, Any]) -> str:
             output.append(f"> *{desc}*")
             output.append("")
 
-        output.append("| Capability | Focus / Engineering Details |")
-        output.append("|---|---|")
+        output.append("| Capability | Level | Focus / Engineering Details |")
+        output.append("|---|---|---|")
         for it in items:
             it_name = it.get("name", "")
+            it_level = it.get("level", "Practicing")
             it_detail = it.get("detail", "")
-            output.append(f"| **{it_name}** | {it_detail} |")
+            output.append(f"| **{it_name}** | `{it_level}` | {it_detail} |")
         output.append("")
     return "\n".join(output).strip()
 
@@ -325,14 +477,24 @@ def render_profile(
     projects_data = load_yaml_file(projects_file)
     stack_data = load_yaml_file(stack_file)
 
+    validate_profile(profile_data)
+
     with open(template_path, "r", encoding="utf-8") as f:
         template = f.read()
 
+    terminal_block = format_terminal_header(profile_data)
+    overview_block = format_overview(profile_data)
     stack_block = format_stack_markdown(stack_data)
     projects_block = format_projects_markdown(projects_data)
+    trajectory_block = format_current_trajectory(profile_data)
+    connect_block = format_connect_block(profile_data)
 
-    rendered = template.replace("{{SYSTEM_STACK_BLOCK}}", stack_block)
+    rendered = template.replace("{{TERMINAL_HEADER_BLOCK}}", terminal_block)
+    rendered = rendered.replace("{{OVERVIEW_BLOCK}}", overview_block)
+    rendered = rendered.replace("{{SYSTEM_STACK_BLOCK}}", stack_block)
     rendered = rendered.replace("{{FEATURED_PROJECTS_BLOCK}}", projects_block)
+    rendered = rendered.replace("{{CURRENT_TRAJECTORY_BLOCK}}", trajectory_block)
+    rendered = rendered.replace("{{CONNECT_BLOCK}}", connect_block)
 
     # Clean trailing whitespaces and normalize line endings to Unix LF
     rendered = "\n".join([line.rstrip() for line in rendered.splitlines()]) + "\n"

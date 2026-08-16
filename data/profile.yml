@@ -1,37 +1,54 @@
-# Phuchello Profile Configuration
-# Identity and high-level positioning
+﻿# Phuchello Profile Configuration
+# Source of truth for identity, overview, focus areas, current trajectory, and connect links.
 
 identity:
   name: "Võ Trọng Phúc"
   handle: "Phuchello"
   role: "Network Engineering · AIoT · Research Systems"
   institution: "University of Information Technology — VNU-HCM (UIT)"
-  location: "Vietnam"
+  location: "Ho Chi Minh City, Vietnam"
   tagline: "Building intelligent systems where networks, edge devices, and AI meet."
+
+terminal:
+  title: "NOC CONSOLE :: PHUCHELLO.NET"
+  sys_state: "SYS_STATE: ONLINE"
 
 overview:
   summary: >
-    Undergraduate researcher and systems engineering student at UIT (VNU-HCM),
-    working at the intersection of network engineering, edge devices (AIoT),
-    and research intelligence systems. Focused on building deterministic,
-    provenance-aware architectures from bare-metal protocols to cloud databases.
+    Undergraduate student at UIT (VNU-HCM) working on research-oriented systems.
+    Interested in how networked devices, backend services, and research data
+    can work together reliably.
   focus_areas:
-    - title: "Network Systems & Protocols"
-      desc: "Socket programming, TCP/UDP transport mechanics, HTTP APIs, and packet-level inspection."
-    - title: "Edge & AIoT Pipelines"
-      desc: "Microcontroller interfacing (ESP32), MQTT pub/sub streams, and edge telemetry collection."
-    - title: "Research Intelligence Infrastructure"
-      desc: "Provenance-first storage, PostgreSQL + pgvector vector engines, and automated scientific ingestion."
+    - title: "Network Engineering & Observability"
+      desc: "Socket programming (TCP/UDP), application-layer protocols (HTTP/REST, SMTP, FTP), RAW socket sniffing, and packet analysis with Wireshark."
+    - title: "Edge Systems & AIoT"
+      desc: "Microcontroller interfacing (ESP32), sensor telemetry streams, and lightweight MQTT pub/sub messaging."
+    - title: "Research Intelligence & Data Systems"
+      desc: "Provenance-first data modeling, asynchronous academic metadata ingestion (arXiv, Crossref, OpenAlex, Semantic Scholar), and vector search with pgvector."
 
-terminal_status:
-  node: "NOC-HCM-NODE-01"
-  state: "ONLINE // ACTIVE RESEARCH"
-  latency: "< 1ms (local loopback)"
-  active_subsystems:
-    - "Intel OS / Ingestion Pipeline (G2 Review)"
-    - "Network Protocol Analysis & Observability"
-    - "Edge Sensing & Telemetry Labs"
+current_trajectory:
+  - title: "Intel OS (NCKH) G2 Ingestion Review"
+    desc: "Refining multi-provider academic metadata reconciliation, idempotent database upserts, and resilient async HTTP rate-limiting."
+  - title: "Network Observability & Protocols"
+    desc: "Deepening packet analysis techniques, custom protocol dissection, and socket concurrency models."
+  - title: "Edge Telemetry Pipelines"
+    desc: "Experimenting with ESP32 sensor nodes transmitting structured telemetry via MQTT to containerized services."
+
+telemetry_ping:
+  command: "ping -c 1 vntrphuc.network"
+  response: "64 bytes from uit-node-01: icmp_seq=1 ttl=64 time=0.038 ms"
+  status_note: "0% packet loss | systems operational | open to research collaboration"
 
 social:
-  github: "https://github.com/Phuchello"
-  linkedin: "https://www.linkedin.com/in/phucvopro/"
+  - label: "GitHub"
+    username: "Phuchello"
+    url: "https://github.com/Phuchello"
+    color: "00E5FF"
+    logo: "github"
+  - label: "LinkedIn"
+    username: "phucvopro"
+    url: "https://www.linkedin.com/in/phucvopro/"
+    color: "38BDF8"
+    logo: "linkedin"
+
+

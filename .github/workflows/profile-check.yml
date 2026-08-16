@@ -27,6 +27,7 @@ jobs:
             README.template.md \
             PROJECT_STATE.md \
             TODO.md \
+            ANTIGRAVITY_HANDOFF.md \
             assets/network-banner.svg \
             assets/topology.svg \
             data/profile.yml \
@@ -46,9 +47,23 @@ jobs:
           echo "=== Verifying Rendered Output Sync ==="
           python scripts/render_profile.py --check
 
-      - name: Test Project Addition Verification
+      - name: Test Profile Data Reactivity
         run: |
-          echo "=== Testing Dynamic Project Injection ==="
+          echo "=== Testing profile.yml Data Reactivity ==="
+          cp data/profile.yml data/profile.yml.bak
+          sed -i 's/Ho Chi Minh City, Vietnam/TEST_NOC_LOCATION_XYZ/g' data/profile.yml
+          python scripts/render_profile.py --output README.test.md
+          if ! grep -q "TEST_NOC_LOCATION_XYZ" README.test.md; then
+            echo "::error::Renderer failed to reflect profile.yml data changes"
+            exit 1
+          fi
+          rm README.test.md
+          mv data/profile.yml.bak data/profile.yml
+          echo "[OK] profile.yml data reactivity verified."
+
+      - name: Test Project Injection Reactivity
+        run: |
+          echo "=== Testing projects.yml Project Injection ==="
           cp data/projects.yml data/projects.yml.bak
           cat << 'EOF' >> data/projects.yml
 
@@ -74,4 +89,4 @@ EOF
           fi
           rm README.test.md
           mv data/projects.yml.bak data/projects.yml
-          echo "[OK] Dynamic project injection test passed successfully."
+          echo "[OK] projects.yml injection test passed successfully."

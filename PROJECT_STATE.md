@@ -10,29 +10,35 @@
 ---
 
 ## Live Status
-- **Current Phase**: Phase F / Execution — Deployed & Verified Live on GitHub
-- **Last Safe Checkpoint**: Milestone 6 — Commit `52a7326` pushed to `origin/main` and verified live on `https://github.com/Phuchello`.
-- **Next Action**: None. The profile is fully operational.
+- **Current Phase**: Targeted Revision Complete & Validated
+- **Last Safe Checkpoint**: Milestone 7 — Targeted revision applied (data-driven profile.yml, calibrated credibility, capability tiers, shortened cards, repository-relative handoff).
+- **Next Action**: Commit and push targeted revision to `origin/main`.
 
 ---
 
-## Milestone Progress Matrix
-
-| Milestone | Scope | Status | Notes |
-|---|---|---|---|
-| **M0: Audit & Workspace** | Public repos audit, environment setup, directory structure | **COMPLETED** | Verified NCKH, NT106, DSA repos. |
-| **M1: Data Models** | `profile.yml`, `projects.yml`, `stack.yml`, `README.template.md` | **COMPLETED** | Established future-proof YAML schema. |
-| **M2: NOC Visual Assets** | `network-banner.svg`, `topology.svg` | **COMPLETED** | Restrained dark NOC aesthetic (`#070B14`). |
-| **M3: Generator & CI** | `render_profile.py`, `.github/workflows/profile-check.yml` | **COMPLETED** | Zero-dependency, deterministic `--check` mode. |
-| **M4: Validation & Quality** | Schema tests, drift check, 5-persona audit, 100-pt rubric | **COMPLETED** | Scored 99/100 against rubric. |
-| **M5: Codex Handoff** | `ANTIGRAVITY_HANDOFF.md`, final clean state | **COMPLETED** | Handoff brief generated. |
-| **M6: Git Deploy & Push** | `git commit` & `git push -u origin main` | **COMPLETED** | Pushed commit `52a7326` to `Phuchello/Phuchello`. |
+## Revision Changelog (Targeted Pass)
+1. **Profile Data-Driven Engine**: Fixed architecture where `data/profile.yml` now drives the entire identity box, overview summary, focus areas, current trajectory, and connect telemetry.
+2. **Dynamic Trajectory Block**: Extracted in-flight research and learning milestones into structured `current_trajectory` list in `data/profile.yml`.
+3. **Credibility Calibration**: Removed overstated phrases (`bare-metal protocols`, `service meshes`, `deterministic branch workflows`, `HNSW / IVFFlat`).
+4. **Three-Tier Capability Matrix**: Annotated `data/stack.yml` capabilities with explicit maturity levels (`Demonstrated`, `Practicing`, `Exploring`).
+5. **Concise Project Cards**: Shortened project descriptions in `data/projects.yml` to navigation summaries.
+6. **Handoff Modernization**: Replaced local file URIs with repository-relative paths in `ANTIGRAVITY_HANDOFF.md`.
+7. **Enhanced CI Workflow**: Added profile data reactivity check to `.github/workflows/profile-check.yml`.
 
 ---
 
-## Remote State Verification
-- **Target Repository**: `https://github.com/Phuchello/Phuchello`
-- **Branch**: `main`
-- **Commit SHA**: `52a7326`
-- **Visibility**: Public
-- **Profile Status**: Active & rendering on `https://github.com/Phuchello`
+## Self Score & Evaluation (Revised)
+- **Technical Identity**: 19 / 20
+- **Credibility / Authenticity**: 19 / 20
+- **Maintainability / Data Architecture**: 20 / 20
+- **GitHub Readability**: 14 / 15
+- **Visual Coherence**: 10 / 10
+- **Technical Correctness**: 10 / 10
+- **Originality**: 5 / 5
+- **Total Score**: **97 / 100**
+
+---
+
+## Known Limitations
+- The profile README relies on GitHub rendering Markdown with embedded SVGs; on certain third-party RSS/Atom readers, SVG embeds may be treated as raw attachments.
+- Interactive SVG animations are avoided to preserve strict GitHub Sanitizer compatibility.
