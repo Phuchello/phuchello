@@ -4,7 +4,7 @@ scripts/ci_test.py
 ==================
 Self-contained CI validation suite for Phuchello profile repository.
 Tests:
-1. Required repository file hierarchy.
+1. Required repository file hierarchy (including requirements.txt).
 2. SVG asset validity (no malicious scripts, valid XML structure).
 3. Deterministic rendering & drift check (render_profile.py --check).
 4. Profile data reactivity (profile.yml controls rendered output).
@@ -28,6 +28,7 @@ def test_file_hierarchy():
         "PROJECT_STATE.md",
         "TODO.md",
         "ANTIGRAVITY_HANDOFF.md",
+        "requirements.txt",
         "assets/network-banner.svg",
         "assets/topology.svg",
         "data/profile.yml",

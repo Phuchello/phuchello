@@ -10,17 +10,18 @@
 ---
 
 ## Live Status
-- **Current Phase**: CI Workflow Hotfix Deployed & Verified
-- **Last Safe Checkpoint**: Commit `106c151` — Decoupled CI tests into `scripts/ci_test.py` with standard clean GitHub Actions YAML. GitHub Actions Run ID `31924160321` completed successfully.
-- **Next Action**: Repository in steady-state; ready for downstream Codex review.
+- **Current Phase**: CI Determinism Hotfix Implemented & Ready for Remote Verification
+- **Last Safe Checkpoint**: Milestone 9 — Replaced dual YAML parser pattern with single canonical PyYAML dependency (`requirements.txt`) across local and CI environments.
+- **Next Action**: Commit and push single unified commit to `origin/main` and verify remote GitHub Actions conclusion.
 
 ---
 
 ## Revision Changelog
-1. **CI Workflow Decoupling**: Extracted all test routines into `scripts/ci_test.py` and simplified `.github/workflows/profile-check.yml` to single clean step, eliminating all YAML multi-line escaping and parser errors.
-2. **Profile Data-Driven Engine**: `data/profile.yml` is the single source of truth for identity, overview, focus areas, current trajectory, and connect telemetry.
-3. **Calibrated Credibility**: Technical vocabulary reflects an ambitious undergraduate systems student.
-4. **Three-Tier Capability Matrix**: `data/stack.yml` capabilities organized into `Demonstrated`, `Practicing`, and `Exploring`.
+1. **Parser Determinism Normalization**: Replaced dual parsing path with single canonical PyYAML engine declared in `requirements.txt`.
+2. **CI Dependency Installation**: Configured `.github/workflows/profile-check.yml` to install `requirements.txt` before running `scripts/ci_test.py`.
+3. **Profile Data-Driven Engine**: `data/profile.yml` is the single source of truth for identity, overview, focus areas, current trajectory, and connect telemetry.
+4. **Calibrated Credibility**: Technical vocabulary reflects an ambitious undergraduate systems student.
+5. **Three-Tier Capability Matrix**: `data/stack.yml` capabilities organized into `Demonstrated`, `Practicing`, and `Exploring`.
 
 ---
 

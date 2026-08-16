@@ -21,6 +21,7 @@ $requiredFiles = @(
     "PROJECT_STATE.md",
     "TODO.md",
     "ANTIGRAVITY_HANDOFF.md",
+    "requirements.txt",
     "assets/network-banner.svg",
     "assets/topology.svg",
     "data/profile.yml",

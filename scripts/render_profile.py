@@ -3,211 +3,25 @@
 scripts/render_profile.py
 =========================
 Deterministic, data-driven README generator for Võ Trọng Phúc (@Phuchello).
-Renders README.md from data/*.yml and README.template.md.
+Renders README.md from data/*.yml and README.template.md using PyYAML (yaml.safe_load).
 
-Zero external dependencies required (uses built-in parser with fallback to PyYAML if present).
+Single canonical YAML interpretation ensures 100% determinism between local and CI environments.
 """
 
 import sys
 import os
 import argparse
-import re
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 
-# Try importing pyyaml, else fallback to built-in clean YAML parser
 try:
     import yaml
-    HAS_PYYAML = True
 except ImportError:
-    HAS_PYYAML = False
-
-
-def _parse_scalar(val: str) -> Any:
-    val = val.strip()
-    if not val:
-        return ""
-    if (val.startswith('"') and val.endswith('"')) or (val.startswith("'") and val.endswith("'")):
-        return val[1:-1]
-    if val.lower() == "true":
-        return True
-    if val.lower() == "false":
-        return False
-    if val.lower() in ("null", "none", "~"):
-        return None
-    try:
-        if "." in val:
-            return float(val)
-        return int(val)
-    except ValueError:
-        return val
-
-
-def parse_simple_yaml(text: str) -> Any:
-    """
-    Robust, lightweight YAML parser for dictionaries, lists, and multi-line strings.
-    Handles standard YAML used in configuration files without external dependencies.
-    """
-    lines = text.splitlines()
-    cleaned_lines = []
-    for line in lines:
-        stripped = line.strip()
-        if not stripped or stripped.startswith("#"):
-            continue
-        # Strip inline comments if not inside quotes
-        if "#" in line:
-            in_quote = False
-            quote_char = ""
-            comment_idx = -1
-            for i, c in enumerate(line):
-                if c in ('"', "'"):
-                    if not in_quote:
-                        in_quote = True
-                        quote_char = c
-                    elif quote_char == c:
-                        in_quote = False
-                elif c == "#" and not in_quote:
-                    comment_idx = i
-                    break
-            if comment_idx != -1:
-                line = line[:comment_idx].rstrip()
-                if not line.strip():
-                    continue
-        indent = len(line) - len(line.lstrip(" "))
-        cleaned_lines.append((indent, line.strip()))
-
-    if not cleaned_lines:
-        return {}
-
-    def parse_block(idx: int, min_indent: int) -> (Any, int):
-        if idx >= len(cleaned_lines):
-            return {}, idx
-
-        first_indent, first_line = cleaned_lines[idx]
-        if first_line.startswith("- "):
-            # Sequence
-            res_list = []
-            cur_idx = idx
-            while cur_idx < len(cleaned_lines):
-                indent, line = cleaned_lines[cur_idx]
-                if indent < min_indent:
-                    break
-                if line.startswith("- "):
-                    item_str = line[2:].strip()
-                    if item_str.startswith(">") or item_str.startswith("|"):
-                        # Multi-line block scalar in list item
-                        block_lines = []
-                        sub_idx = cur_idx + 1
-                        while sub_idx < len(cleaned_lines):
-                            s_indent, s_line = cleaned_lines[sub_idx]
-                            if s_indent <= indent:
-                                break
-                            block_lines.append(s_line)
-                            sub_idx += 1
-                        sep = " " if item_str.startswith(">") else "\n"
-                        res_list.append(sep.join(block_lines))
-                        cur_idx = sub_idx
-                    elif ":" in item_str and not (item_str.startswith('"') or item_str.startswith("'")):
-                        # Inline dict starting on list item line
-                        k, v = item_str.split(":", 1)
-                        k = _parse_scalar(k)
-                        v = v.strip()
-                        sub_dict = {}
-                        if v.startswith(">") or v.startswith("|"):
-                            block_lines = []
-                            sub_idx = cur_idx + 1
-                            while sub_idx < len(cleaned_lines):
-                                s_indent, s_line = cleaned_lines[sub_idx]
-                                if s_indent <= indent:
-                                    break
-                                block_lines.append(s_line)
-                                sub_idx += 1
-                            sep = " " if v.startswith(">") else "\n"
-                            sub_dict[k] = sep.join(block_lines)
-                            cur_idx = sub_idx
-                        elif v:
-                            sub_dict[k] = _parse_scalar(v)
-                            cur_idx += 1
-                        else:
-                            # Sub-block under this key
-                            sub_val, next_i = parse_block(cur_idx + 1, indent + 2)
-                            sub_dict[k] = sub_val
-                            cur_idx = next_i
-
-                        # Read subsequent keys for the same list item dict
-                        while cur_idx < len(cleaned_lines):
-                            s_indent, s_line = cleaned_lines[cur_idx]
-                            if s_indent <= indent or s_line.startswith("- "):
-                                break
-                            if ":" in s_line:
-                                sk, sv = s_line.split(":", 1)
-                                sk = _parse_scalar(sk)
-                                sv = sv.strip()
-                                if sv.startswith(">") or sv.startswith("|"):
-                                    block_lines = []
-                                    sub_idx = cur_idx + 1
-                                    while sub_idx < len(cleaned_lines):
-                                        ss_indent, ss_line = cleaned_lines[sub_idx]
-                                        if ss_indent <= s_indent:
-                                            break
-                                        block_lines.append(ss_line)
-                                        sub_idx += 1
-                                    sep = " " if sv.startswith(">") else "\n"
-                                    sub_dict[sk] = sep.join(block_lines)
-                                    cur_idx = sub_idx
-                                elif sv:
-                                    sub_dict[sk] = _parse_scalar(sv)
-                                    cur_idx += 1
-                                else:
-                                    sub_val, next_i = parse_block(cur_idx + 1, s_indent + 1)
-                                    sub_dict[sk] = sub_val
-                                    cur_idx = next_i
-                            else:
-                                cur_idx += 1
-                        res_list.append(sub_dict)
-                    else:
-                        res_list.append(_parse_scalar(item_str))
-                        cur_idx += 1
-                else:
-                    break
-            return res_list, cur_idx
-        else:
-            # Mapping
-            res_dict = {}
-            cur_idx = idx
-            while cur_idx < len(cleaned_lines):
-                indent, line = cleaned_lines[cur_idx]
-                if indent < min_indent:
-                    break
-                if ":" in line:
-                    k, v = line.split(":", 1)
-                    k = _parse_scalar(k)
-                    v = v.strip()
-                    if v.startswith(">") or v.startswith("|"):
-                        block_lines = []
-                        sub_idx = cur_idx + 1
-                        while sub_idx < len(cleaned_lines):
-                            s_indent, s_line = cleaned_lines[sub_idx]
-                            if s_indent <= indent:
-                                break
-                            block_lines.append(s_line)
-                            sub_idx += 1
-                        sep = " " if v.startswith(">") else "\n"
-                        res_dict[k] = sep.join(block_lines)
-                        cur_idx = sub_idx
-                    elif v:
-                        res_dict[k] = _parse_scalar(v)
-                        cur_idx += 1
-                    else:
-                        sub_val, next_i = parse_block(cur_idx + 1, indent + 1)
-                        res_dict[k] = sub_val
-                        cur_idx = next_i
-                else:
-                    cur_idx += 1
-            return res_dict, cur_idx
-
-    result, _ = parse_block(0, 0)
-    return result
+    sys.exit(
+        "[ERROR] PyYAML is required but not installed.\n"
+        "Please install project dependencies by running:\n"
+        "    pip install -r requirements.txt\n"
+    )
 
 
 def load_yaml_file(filepath: Path) -> Any:
@@ -215,9 +29,7 @@ def load_yaml_file(filepath: Path) -> Any:
         raise FileNotFoundError(f"Configuration file not found: {filepath}")
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
-    if HAS_PYYAML:
-        return yaml.safe_load(content)
-    return parse_simple_yaml(content)
+    return yaml.safe_load(content)
 
 
 def validate_profile(profile: Dict[str, Any]) -> None:
