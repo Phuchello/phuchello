@@ -8,7 +8,7 @@
 -->
 
 <div align="center">
-  <img src="assets/network-banner.svg" alt="Phuchello Network Intelligence Banner" width="100%">
+  <img src="assets/network-banner.png" alt="Phuchello Network Intelligence Banner" width="100%">
 </div>
 
 ```text
@@ -39,7 +39,7 @@ Undergraduate student at UIT (VNU-HCM) working on research-oriented systems. Int
 A conceptual map of technical directions spanning physical sensing, network transport, data engineering, and personal research memory.
 
 <div align="center">
-  <img src="assets/topology.svg" alt="Edge-to-Cloud System Architecture & Research Trajectory" width="100%">
+  <img src="assets/topology.png" alt="Phuchello Network Intelligence Direction Map" width="100%">
 </div>
 
 ---
