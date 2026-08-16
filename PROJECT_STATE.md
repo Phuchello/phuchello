@@ -10,21 +10,21 @@
 ---
 
 ## Live Status
-- **Current Phase**: CI Workflow Hotfix Complete & Ready for Verification
-- **Last Safe Checkpoint**: Milestone 8 — Fixed `.github/workflows/profile-check.yml` heredoc indentation syntax error using inline Python test routines.
-- **Next Action**: Push hotfix to `origin/main` and verify that GitHub Actions run concludes SUCCESS.
+- **Current Phase**: CI Workflow Hotfix Deployed & Verified
+- **Last Safe Checkpoint**: Commit `106c151` — Decoupled CI tests into `scripts/ci_test.py` with standard clean GitHub Actions YAML. GitHub Actions Run ID `31924160321` completed successfully.
+- **Next Action**: Repository in steady-state; ready for downstream Codex review.
 
 ---
 
 ## Revision Changelog
-1. **CI Workflow Syntax Hotfix**: Replaced fragile bash heredoc with safe inline Python testing script in `.github/workflows/profile-check.yml` to prevent YAML indentation parsing failures.
+1. **CI Workflow Decoupling**: Extracted all test routines into `scripts/ci_test.py` and simplified `.github/workflows/profile-check.yml` to single clean step, eliminating all YAML multi-line escaping and parser errors.
 2. **Profile Data-Driven Engine**: `data/profile.yml` is the single source of truth for identity, overview, focus areas, current trajectory, and connect telemetry.
 3. **Calibrated Credibility**: Technical vocabulary reflects an ambitious undergraduate systems student.
 4. **Three-Tier Capability Matrix**: `data/stack.yml` capabilities organized into `Demonstrated`, `Practicing`, and `Exploring`.
 
 ---
 
-## Self Score & Evaluation
+## Evaluation Calibration
 - **Technical Identity**: 19 / 20
 - **Credibility / Authenticity**: 19 / 20
 - **Maintainability / Data Architecture**: 20 / 20
