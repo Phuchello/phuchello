@@ -73,9 +73,9 @@ def test_profile_reactivity():
     shutil.copy(profile_path, bak_path)
     try:
         orig_text = profile_path.read_text(encoding="utf-8")
-        test_marker = "TEST_PROFILE_SUMMARY_CI_XYZ"
+        test_marker = "TEST_PROFILE_FOCUS_CI_XYZ"
         modified_text = orig_text.replace(
-            "UIT undergraduate focused on networking and AIoT, with current work spanning packet analysis, edge telemetry, and research-data systems.",
+            "Networking & Observability",
             test_marker,
         )
         profile_path.write_text(modified_text, encoding="utf-8")
@@ -91,7 +91,7 @@ def test_profile_reactivity():
 
         output_text = test_readme.read_text(encoding="utf-8")
         if test_marker not in output_text:
-            raise AssertionError("Renderer failed to reflect profile.yml summary changes into output markdown.")
+            raise AssertionError("Renderer failed to reflect profile.yml focus-area changes into output markdown.")
         print("  [OK] profile.yml data changes propagate directly to rendered README.")
     finally:
         if test_readme.exists():

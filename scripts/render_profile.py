@@ -64,14 +64,9 @@ def validate_projects(projects: List[Dict[str, Any]]) -> None:
 
 def format_overview(profile_data: Dict[str, Any]) -> str:
     overview = profile_data.get("overview", {})
-    summary = overview.get("summary", "").strip()
     focus_areas = overview.get("focus_areas", [])
 
     lines = []
-    if summary:
-        lines.append(summary)
-        lines.append("")
-
     for fa in focus_areas:
         title = fa.get("title", "")
         desc = fa.get("desc", "")
@@ -114,7 +109,7 @@ def format_connect_block(profile_data: Dict[str, Any]) -> str:
         label = s.get("label", "Link")
         username = s.get("username", "")
         url = s.get("url", "")
-        color = s.get("color", "00E5FF")
+        color = s.get("color", "315F57")
         logo = s.get("logo", "github")
         logo_color = s.get("logo_color", "F2F1ED")
         badge = f"[![{label}](https://img.shields.io/badge/{label}-{username}-{color}?style=flat-square&logo={logo}&logoColor={logo_color})]({url})"

@@ -15,8 +15,6 @@
 
 ## // 01. FOCUS AREAS
 
-UIT undergraduate focused on networking and AIoT, with current work spanning packet analysis, edge telemetry, and research-data systems.
-
 * **Networking & Observability** — TCP/UDP socket programming, application protocols, RAW socket capture, and packet analysis with Wireshark.
 * **Edge Systems & AIoT** — ESP32 sensor nodes, MQTT telemetry, and lightweight edge-to-service data flows.
 * **Research Data & Intelligence** — Academic metadata ingestion, provenance-aware data modeling, PostgreSQL/pgvector, and retrieval workflows.
