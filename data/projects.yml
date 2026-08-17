@@ -60,9 +60,49 @@ projects:
       - Complexity Proofs
       - Dry-Run Tracing
       - KaTeX Math
+    featured: false
+    status: "Completed / Reference"
+    priority: 5
+    links:
+      repository: "https://github.com/Phuchello/DSA_UIT_HANDBOOK"
+      web_view: "https://phuchello.github.io/DSA_UIT_HANDBOOK/"
+
+  - name: "IT007 Operating Systems Handbook"
+    repo: "Phuchello/HDH_UIT"
+    category: "Systems & Linux Foundations"
+    tagline: "Reference covering operating-system fundamentals, process synchronization, memory management, and practical Linux/POSIX concepts."
+    description: >
+      A 57-page handbook covering processes and threads, CPU scheduling, synchronization,
+      deadlock, paging and virtual memory, with selected Linux/POSIX lab patterns.
+    tech:
+      - Linux / POSIX
+      - Processes & Threads
+      - CPU Scheduling
+      - Synchronization
+      - Virtual Memory
     featured: true
     status: "Completed / Reference"
     priority: 3
     links:
-      repository: "https://github.com/Phuchello/DSA_UIT_HANDBOOK"
-      web_view: "https://phuchello.github.io/DSA_UIT_HANDBOOK/"
+      repository: "https://github.com/Phuchello/HDH_UIT"
+      web_view: "https://github.com/Phuchello/HDH_UIT/blob/main/dist/IT007_CamNang_HeDieuHanh_UIT_VoTrongPhuc_FINAL.html"
+
+  - name: "IT004 Database Systems Handbook"
+    repo: "Phuchello/CSDL_UIT"
+    category: "Database & Data Systems"
+    tagline: "Reference covering ER modeling, relational algebra, SQL Server, integrity constraints, and normalization."
+    description: >
+      An 88-page handbook covering ER-to-schema mapping, relational algebra, T-SQL queries,
+      integrity constraints, functional dependencies, and 1NF–BCNF normalization.
+    tech:
+      - SQL Server / T-SQL
+      - ER Modeling
+      - Relational Algebra
+      - Integrity Constraints
+      - Normalization
+    featured: true
+    status: "Completed / Reference"
+    priority: 4
+    links:
+      repository: "https://github.com/Phuchello/CSDL_UIT"
+      web_view: "https://phuchello.github.io/CSDL_UIT/"

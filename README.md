@@ -35,8 +35,8 @@
 |---|---|
 | **Networking** | TCP/IP · UDP · Sockets · HTTP · Wireshark |
 | **Edge / AIoT** | ESP32 · MQTT · Sensors · Telemetry |
-| **Systems** | Linux · Docker · PostgreSQL · Git |
-| **Research / Data** | Python · FastAPI · pgvector · Provenance |
+| **Systems** | Linux · POSIX · Docker · PostgreSQL · Git |
+| **Research / Data** | Python · FastAPI · PostgreSQL · pgvector · SQL / Data Modeling |
 
 ---
 
@@ -64,14 +64,25 @@ Built around asynchronous metadata ingestion from arXiv, Crossref, OpenAlex, and
 
 ---
 
-### [DSA Comprehensive Handbook](https://github.com/Phuchello/DSA_UIT_HANDBOOK)
-**Category:** `Algorithms & Systems Foundations` &nbsp;|&nbsp; **Status:** `Completed / Reference` &nbsp;|&nbsp; **Stack:** `C++ / STL` · `Tree Algorithms (AVL, B-Tree)` · `Graph Algorithms (Dijkstra, BFS/DFS)` · `Complexity Proofs` · `Dry-Run Tracing` · `KaTeX Math`
+### [IT007 Operating Systems Handbook](https://github.com/Phuchello/HDH_UIT)
+**Category:** `Systems & Linux Foundations` &nbsp;|&nbsp; **Status:** `Completed / Reference` &nbsp;|&nbsp; **Stack:** `Linux / POSIX` · `Processes & Threads` · `CPU Scheduling` · `Synchronization` · `Virtual Memory`
 
-> **Data structures and algorithms reference with dry-run tables and complexity analysis**
+> **Reference covering operating-system fundamentals, process synchronization, memory management, and practical Linux/POSIX concepts.**
 
-16-chapter reference covering algorithmic complexity (Big-O/Omega/Theta), sorting algorithms with memory and stability analysis, pointer-based tree structures (BST, AVL, B-Tree, Heaps), and graph algorithms.
+A 57-page handbook covering processes and threads, CPU scheduling, synchronization, deadlock, paging and virtual memory, with selected Linux/POSIX lab patterns.
 
-🔗 **Links:** [Repository](https://github.com/Phuchello/DSA_UIT_HANDBOOK) · [Web View](https://phuchello.github.io/DSA_UIT_HANDBOOK/)
+🔗 **Links:** [Repository](https://github.com/Phuchello/HDH_UIT) · [Web View](https://github.com/Phuchello/HDH_UIT/blob/main/dist/IT007_CamNang_HeDieuHanh_UIT_VoTrongPhuc_FINAL.html)
+
+---
+
+### [IT004 Database Systems Handbook](https://github.com/Phuchello/CSDL_UIT)
+**Category:** `Database & Data Systems` &nbsp;|&nbsp; **Status:** `Completed / Reference` &nbsp;|&nbsp; **Stack:** `SQL Server / T-SQL` · `ER Modeling` · `Relational Algebra` · `Integrity Constraints` · `Normalization`
+
+> **Reference covering ER modeling, relational algebra, SQL Server, integrity constraints, and normalization.**
+
+An 88-page handbook covering ER-to-schema mapping, relational algebra, T-SQL queries, integrity constraints, functional dependencies, and 1NF–BCNF normalization.
+
+🔗 **Links:** [Repository](https://github.com/Phuchello/CSDL_UIT) · [Web View](https://phuchello.github.io/CSDL_UIT/)
 
 ---
 
