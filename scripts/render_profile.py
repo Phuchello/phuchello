@@ -163,7 +163,6 @@ def format_projects_markdown(projects_data: Dict[str, Any]) -> str:
     projects = projects_data.get("projects", [])
     validate_projects(projects)
 
-    # Filter featured and sort by priority (lowest integer = highest priority)
     featured = [p for p in projects if p.get("featured", False)]
     featured.sort(key=lambda x: x.get("priority", 999))
 
@@ -232,15 +231,16 @@ def render_profile(
     overview_block = format_overview(profile_data)
     research_interests_block = format_interest_block(profile_data, "research_interests")
     stack_block = format_stack_markdown(stack_data)
+    now_exploring_block = format_interest_block(profile_data, "now_exploring")
     connect_block = format_connect_block(profile_data)
 
     rendered = rendered.replace("{{INTRO_BLOCK}}", intro_block)
     rendered = rendered.replace("{{OVERVIEW_BLOCK}}", overview_block)
     rendered = rendered.replace("{{RESEARCH_INTERESTS_BLOCK}}", research_interests_block)
     rendered = rendered.replace("{{SYSTEM_STACK_BLOCK}}", stack_block)
+    rendered = rendered.replace("{{NOW_EXPLORING_BLOCK}}", now_exploring_block)
     rendered = rendered.replace("{{CONNECT_BLOCK}}", connect_block)
 
-    # Clean trailing whitespaces and normalize line endings to Unix LF
     rendered = "\n".join([line.rstrip() for line in rendered.splitlines()]) + "\n"
 
     if check_mode:
