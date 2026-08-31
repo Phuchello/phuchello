@@ -19,17 +19,16 @@ Interested in building intelligent systems where networks, edge devices, distrib
 
 * **Networking & Systems** — Network programming, protocols, packet analysis, Linux/POSIX, and distributed services.
 * **Edge Systems & AIoT** — ESP32, sensors, MQTT, telemetry pipelines, and resource-constrained edge intelligence.
-* **Research Engineering** — Research-data systems, reproducible experimentation, provenance-aware workflows, and intelligent system design.
+* **Research Engineering** — Reproducible experimentation and system-oriented research across digital twins, distributed intelligence, and efficient AIoT.
 
 ---
 
 ## // 02. RESEARCH INTERESTS
 
-* **Digital Twin** — Connecting physical environments with continuously updated computational representations.
-* **Distributed / Federated Intelligence** — Learning across distributed devices without requiring all raw data to be centralized.
-* **Continual Learning** — Systems that adapt as environments, sensors, and data distributions change over time.
-* **Compute & Communication Optimization** — Reducing communication cost, compute usage, latency, and energy in distributed learning systems.
-* **Reinforcement Learning for Orchestration** — Exploring adaptive decision-making for resource allocation, offloading, communication, and edge-system control.
+* **Digital Twins** — Connecting physical environments with continuously updated computational representations for monitoring, reasoning, and intelligent decision support.
+* **Distributed / Federated Intelligence** — Learning and inference across distributed devices while minimizing dependence on centralized raw-data collection.
+* **Continual & Adaptive Learning** — Systems that adapt as environments, sensors, workloads, and data distributions change over time.
+* **Efficient AIoT & Adaptive Orchestration** — Communication-, compute-, latency-, and energy-aware intelligence for distributed edge systems, including learning-based resource allocation and orchestration.
 
 ---
 
@@ -52,15 +51,7 @@ Interested in building intelligent systems where networks, edge devices, distrib
 
 ---
 
-## // 05. NOW EXPLORING
-
-* **Intelligent Digital Twins** — How sparse physical sensing can support useful digital representations and AI-assisted reasoning.
-* **Distributed Edge Intelligence** — How learning and inference can operate across resource-constrained connected devices.
-* **Efficient AIoT Systems** — How communication, compute, latency, and energy can be optimized together rather than independently.
-
----
-
-## // 06. CONNECT
+## // 05. CONNECT
 
 <div align="center">
 

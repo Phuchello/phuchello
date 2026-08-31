@@ -39,12 +39,6 @@
 
 ---
 
-## // 05. NOW EXPLORING
-
-{{NOW_EXPLORING_BLOCK}}
-
----
-
-## // 06. CONNECT
+## // 05. CONNECT
 
 {{CONNECT_BLOCK}}
