@@ -21,17 +21,27 @@ overview:
     - title: "Edge Systems & AIoT"
       desc: "ESP32, sensors, MQTT, telemetry pipelines, and resource-constrained edge intelligence."
     - title: "Research Engineering"
-      desc: "Reproducible experimentation and system-oriented research across digital twins, distributed intelligence, and efficient AIoT."
+      desc: "Research-data systems, reproducible experimentation, provenance-aware workflows, and intelligent system design."
 
 research_interests:
-  - title: "Digital Twins"
-    desc: "Connecting physical environments with continuously updated computational representations for monitoring, reasoning, and intelligent decision support."
+  - title: "Digital Twin"
+    desc: "Connecting physical environments with continuously updated computational representations."
   - title: "Distributed / Federated Intelligence"
-    desc: "Learning and inference across distributed devices while minimizing dependence on centralized raw-data collection."
-  - title: "Continual & Adaptive Learning"
-    desc: "Systems that adapt as environments, sensors, workloads, and data distributions change over time."
-  - title: "Efficient AIoT & Adaptive Orchestration"
-    desc: "Communication-, compute-, latency-, and energy-aware intelligence for distributed edge systems, including learning-based resource allocation and orchestration."
+    desc: "Learning across distributed devices without requiring all raw data to be centralized."
+  - title: "Continual Learning"
+    desc: "Systems that adapt as environments, sensors, and data distributions change over time."
+  - title: "Compute & Communication Optimization"
+    desc: "Reducing communication cost, compute usage, latency, and energy in distributed learning systems."
+  - title: "Reinforcement Learning for Orchestration"
+    desc: "Exploring adaptive decision-making for resource allocation, offloading, communication, and edge-system control."
+
+now_exploring:
+  - title: "Intelligent Digital Twins"
+    desc: "How sparse physical sensing can support useful digital representations and AI-assisted reasoning."
+  - title: "Distributed Edge Intelligence"
+    desc: "How learning and inference can operate across resource-constrained connected devices."
+  - title: "Efficient AIoT Systems"
+    desc: "How communication, compute, latency, and energy can be optimized together rather than independently."
 
 terminal_status:
   prompt: "[phuchello@workspace ~]$"
