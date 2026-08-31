@@ -75,13 +75,33 @@ def format_overview(profile_data: Dict[str, Any]) -> str:
     return "\n".join(lines).strip()
 
 
-def format_current_trajectory(profile_data: Dict[str, Any]) -> str:
-    trajectory = profile_data.get("current_trajectory", [])
-    if not trajectory:
-        return "*Continuous learning and systems exploration in progress.*"
+def format_intro(profile_data: Dict[str, Any]) -> str:
+    identity = profile_data.get("identity", {})
+    intro = profile_data.get("intro", {})
+    name = identity.get("name", "")
+    descriptor = intro.get("descriptor", "")
+    supporting = intro.get("supporting", "")
+    lines = []
+    if name and descriptor:
+        lines.append(f"**{name}** — {descriptor}")
+    elif name:
+        lines.append(f"**{name}**")
+    elif descriptor:
+        lines.append(descriptor)
+    if supporting:
+        if lines:
+            lines.append("")
+        lines.append(supporting)
+    return "\n".join(lines).strip()
+
+
+def format_interest_block(profile_data: Dict[str, Any], key: str) -> str:
+    interests = profile_data.get(key, [])
+    if not interests:
+        return "*No exploration areas configured.*"
 
     lines = []
-    for item in trajectory:
+    for item in interests:
         title = item.get("title", "")
         desc = item.get("desc", "")
         lines.append(f"* **{title}** — {desc}")
@@ -202,21 +222,24 @@ def render_profile(
     stack_data = load_yaml_file(stack_file)
 
     validate_profile(profile_data)
+    validate_projects(projects_data.get("projects", []))
 
     with open(template_path, "r", encoding="utf-8") as f:
         template = f.read()
 
     rendered = template
+    intro_block = format_intro(profile_data)
     overview_block = format_overview(profile_data)
+    research_interests_block = format_interest_block(profile_data, "research_interests")
     stack_block = format_stack_markdown(stack_data)
-    projects_block = format_projects_markdown(projects_data)
-    trajectory_block = format_current_trajectory(profile_data)
+    now_exploring_block = format_interest_block(profile_data, "now_exploring")
     connect_block = format_connect_block(profile_data)
 
+    rendered = rendered.replace("{{INTRO_BLOCK}}", intro_block)
     rendered = rendered.replace("{{OVERVIEW_BLOCK}}", overview_block)
+    rendered = rendered.replace("{{RESEARCH_INTERESTS_BLOCK}}", research_interests_block)
     rendered = rendered.replace("{{SYSTEM_STACK_BLOCK}}", stack_block)
-    rendered = rendered.replace("{{FEATURED_PROJECTS_BLOCK}}", projects_block)
-    rendered = rendered.replace("{{CURRENT_TRAJECTORY_BLOCK}}", trajectory_block)
+    rendered = rendered.replace("{{NOW_EXPLORING_BLOCK}}", now_exploring_block)
     rendered = rendered.replace("{{CONNECT_BLOCK}}", connect_block)
 
     # Clean trailing whitespaces and normalize line endings to Unix LF

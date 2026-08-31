@@ -2,8 +2,8 @@
   =============================================================================
   Phuchello / GitHub Profile README Template
   AUTO-GENERATED via scripts/render_profile.py from data/*.yml
-  DO NOT EDIT README.md DIRECTLY. Edit data/profile.yml, data/projects.yml,
-  or data/stack.yml, then run: python scripts/render_profile.py
+  DO NOT EDIT README.md DIRECTLY. Edit data/profile.yml or data/stack.yml,
+  then run: python scripts/render_profile.py
   =============================================================================
 -->
 
@@ -11,15 +11,21 @@
   <img src="assets/network-banner.png" alt="Phuchello Network Intelligence Banner" width="100%">
 </div>
 
-**Võ Trọng Phúc** — UIT undergraduate focused on networking and AIoT, currently exploring packet-level systems, edge telemetry, and research-data infrastructure.
+{{INTRO_BLOCK}}
 
-## // 01. FOCUS AREAS
+## // 01. FOCUS
 
 {{OVERVIEW_BLOCK}}
 
 ---
 
-## // 02. DIRECTION MAP
+## // 02. RESEARCH INTERESTS
+
+{{RESEARCH_INTERESTS_BLOCK}}
+
+---
+
+## // 03. DIRECTION MAP
 
 <div align="center">
   <img src="assets/topology.png" alt="Phuchello Network Intelligence Direction Map" width="100%">
@@ -27,21 +33,15 @@
 
 ---
 
-## // 03. TECHNICAL STACK
+## // 04. TECH STACK
 
 {{SYSTEM_STACK_BLOCK}}
 
 ---
 
-## // 04. SELECTED WORK
+## // 05. NOW EXPLORING
 
-{{FEATURED_PROJECTS_BLOCK}}
-
----
-
-## // 05. CURRENT DIRECTION
-
-{{CURRENT_TRAJECTORY_BLOCK}}
+{{NOW_EXPLORING_BLOCK}}
 
 ---
 

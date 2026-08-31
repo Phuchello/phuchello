@@ -5,10 +5,10 @@ scripts/ci_test.py
 Self-contained CI validation suite for Phuchello profile repository.
 Tests:
 1. Required repository file hierarchy (including requirements.txt).
-2. SVG asset validity (no malicious scripts, valid XML structure).
+2. Approved PNG asset validity.
 3. Deterministic rendering & drift check (render_profile.py --check).
 4. Profile data reactivity (profile.yml controls rendered output).
-5. Project registry reactivity (projects.yml controls rendered output).
+5. Project registry validation (projects.yml remains schema-checked without public cards).
 """
 
 import sys
@@ -75,7 +75,7 @@ def test_profile_reactivity():
         orig_text = profile_path.read_text(encoding="utf-8")
         test_marker = "TEST_PROFILE_FOCUS_CI_XYZ"
         modified_text = orig_text.replace(
-            "Networking & Observability",
+            "Networking & Systems",
             test_marker,
         )
         profile_path.write_text(modified_text, encoding="utf-8")
@@ -100,8 +100,8 @@ def test_profile_reactivity():
             shutil.move(bak_path, profile_path)
 
 
-def test_projects_reactivity():
-    print("[5/5] Testing data/projects.yml reactivity...")
+def test_projects_registry_validation():
+    print("[5/5] Testing data/projects.yml registry validation...")
     projects_path = BASE_DIR / "data" / "projects.yml"
     bak_path = BASE_DIR / "data" / "projects.yml.ci_bak"
     test_readme = BASE_DIR / "README.test.md"
@@ -138,9 +138,9 @@ def test_projects_reactivity():
             raise RuntimeError(f"Renderer failed during projects reactivity test: {res.stderr}")
 
         output_text = test_readme.read_text(encoding="utf-8")
-        if "AIoT Edge Telemetry Gateway" not in output_text:
-            raise AssertionError("Renderer failed to reflect projects.yml injection into output markdown.")
-        print("  [OK] projects.yml additions propagate directly to rendered README.")
+        if "AIoT Edge Telemetry Gateway" in output_text:
+            raise AssertionError("Project registry data unexpectedly leaked into the personal README.")
+        print("  [OK] projects.yml remains validated without public project cards.")
     finally:
         if test_readme.exists():
             test_readme.unlink()
@@ -157,7 +157,7 @@ def main():
         test_visual_assets()
         test_render_check()
         test_profile_reactivity()
-        test_projects_reactivity()
+        test_projects_registry_validation()
         print("\n========================================")
         print("    ALL CI VALIDATION CHECKS PASSED     ")
         print("========================================")

@@ -2,8 +2,8 @@
   =============================================================================
   Phuchello / GitHub Profile README Template
   AUTO-GENERATED via scripts/render_profile.py from data/*.yml
-  DO NOT EDIT README.md DIRECTLY. Edit data/profile.yml, data/projects.yml,
-  or data/stack.yml, then run: python scripts/render_profile.py
+  DO NOT EDIT README.md DIRECTLY. Edit data/profile.yml or data/stack.yml,
+  then run: python scripts/render_profile.py
   =============================================================================
 -->
 
@@ -11,17 +11,29 @@
   <img src="assets/network-banner.png" alt="Phuchello Network Intelligence Banner" width="100%">
 </div>
 
-**Võ Trọng Phúc** — UIT undergraduate focused on networking and AIoT, currently exploring packet-level systems, edge telemetry, and research-data infrastructure.
+**Võ Trọng Phúc** — Undergraduate at the University of Information Technology, VNU-HCM, focused on networking, AIoT, and research-oriented systems.
 
-## // 01. FOCUS AREAS
+Interested in building intelligent systems where networks, edge devices, distributed data, and AI meet.
 
-* **Networking & Observability** — TCP/UDP socket programming, application protocols, RAW socket capture, and packet analysis with Wireshark.
-* **Edge Systems & AIoT** — ESP32 sensor nodes, MQTT telemetry, and lightweight edge-to-service data flows.
-* **Research Data & Intelligence** — Academic metadata ingestion, provenance-aware data modeling, PostgreSQL/pgvector, and retrieval workflows.
+## // 01. FOCUS
+
+* **Networking & Systems** — Network programming, protocols, packet analysis, Linux/POSIX, and distributed services.
+* **Edge Systems & AIoT** — ESP32, sensors, MQTT, telemetry pipelines, and resource-constrained edge intelligence.
+* **Research Engineering** — Research-data systems, reproducible experimentation, provenance-aware workflows, and intelligent system design.
 
 ---
 
-## // 02. DIRECTION MAP
+## // 02. RESEARCH INTERESTS
+
+* **Digital Twin** — Connecting physical environments with continuously updated computational representations.
+* **Distributed / Federated Intelligence** — Learning across distributed devices without requiring all raw data to be centralized.
+* **Continual Learning** — Systems that adapt as environments, sensors, and data distributions change over time.
+* **Compute & Communication Optimization** — Reducing communication cost, compute usage, latency, and energy in distributed learning systems.
+* **Reinforcement Learning for Orchestration** — Exploring adaptive decision-making for resource allocation, offloading, communication, and edge-system control.
+
+---
+
+## // 03. DIRECTION MAP
 
 <div align="center">
   <img src="assets/topology.png" alt="Phuchello Network Intelligence Direction Map" width="100%">
@@ -29,68 +41,22 @@
 
 ---
 
-## // 03. TECHNICAL STACK
+## // 04. TECH STACK
 
 | Area | Working with |
 |---|---|
 | **Networking** | TCP/IP · UDP · Sockets · HTTP · Wireshark |
 | **Edge / AIoT** | ESP32 · MQTT · Sensors · Telemetry |
-| **Systems** | Linux · POSIX · Docker · PostgreSQL · Git |
-| **Research / Data** | Python · FastAPI · PostgreSQL · pgvector · SQL / Data Modeling |
+| **Systems** | Linux · POSIX · Docker · Git |
+| **Data / Research** | Python · FastAPI · PostgreSQL · pgvector · SQL |
 
 ---
 
-## // 04. SELECTED WORK
+## // 05. NOW EXPLORING
 
-### [Intel OS (NCKH)](https://github.com/Phuchello/NCKH)
-**Category:** `Research Intelligence & Systems` &nbsp;|&nbsp; **Status:** `Active` &nbsp;|&nbsp; **Stack:** `Python 3.12` · `FastAPI (Async)` · `PostgreSQL 16 + pgvector` · `SQLAlchemy 2.x / asyncpg` · `Alembic Migrations` · `Docker Compose`
-
-> **A personal system for collecting, reconciling, and retrieving research literature.**
-
-Built around asynchronous metadata ingestion from arXiv, Crossref, OpenAlex, and Semantic Scholar, with PostgreSQL/pgvector for storage and retrieval.
-
-🔗 **Links:** [Repository](https://github.com/Phuchello/NCKH) · [Docs](https://github.com/Phuchello/NCKH/blob/main/docs/PUBLIC_PROGRESS.md)
-
----
-
-### [NT106 Network Programming Handbook](https://github.com/Phuchello/NT106_UIT_HANDBOOK)
-**Category:** `Network Engineering & Observability` &nbsp;|&nbsp; **Status:** `Completed / Reference` &nbsp;|&nbsp; **Stack:** `TCP / UDP Sockets` · `RAW Sockets (Promiscuous)` · `Wireshark Analysis` · `HTTP / REST APIs` · `Multithreaded I/O` · `AES-256 / SHA-256`
-
-> **Systems engineering handbook covering socket programming, application protocols, and packet sniffing**
-
-18-chapter practical reference for Network Programming at UIT. Covers TCP/UDP socket architectures, application layer protocols (HTTP, SMTP, FTP), RAW socket sniffing, and packet analysis with Wireshark.
-
-🔗 **Links:** [Repository](https://github.com/Phuchello/NT106_UIT_HANDBOOK) · [Web View](https://github.com/Phuchello/NT106_UIT_HANDBOOK/blob/main/NT106_CamNang_LapTrinhMang_UIT_VoTrongPhuc_PRECODEX.pdf)
-
----
-
-### [IT007 Operating Systems Handbook](https://github.com/Phuchello/HDH_UIT)
-**Category:** `Systems & Linux Foundations` &nbsp;|&nbsp; **Status:** `Completed / Reference` &nbsp;|&nbsp; **Stack:** `Linux / POSIX` · `Processes & Threads` · `CPU Scheduling` · `Synchronization` · `Virtual Memory`
-
-> **Reference covering operating-system fundamentals, process synchronization, memory management, and practical Linux/POSIX concepts.**
-
-A 57-page handbook covering processes and threads, CPU scheduling, synchronization, deadlock, paging and virtual memory, with selected Linux/POSIX lab patterns.
-
-🔗 **Links:** [Repository](https://github.com/Phuchello/HDH_UIT) · [Web View](https://github.com/Phuchello/HDH_UIT/blob/main/dist/IT007_CamNang_HeDieuHanh_UIT_VoTrongPhuc_FINAL.html)
-
----
-
-### [IT004 Database Systems Handbook](https://github.com/Phuchello/CSDL_UIT)
-**Category:** `Database & Data Systems` &nbsp;|&nbsp; **Status:** `Completed / Reference` &nbsp;|&nbsp; **Stack:** `SQL Server / T-SQL` · `ER Modeling` · `Relational Algebra` · `Integrity Constraints` · `Normalization`
-
-> **Reference covering ER modeling, relational algebra, SQL Server, integrity constraints, and normalization.**
-
-An 88-page handbook covering ER-to-schema mapping, relational algebra, T-SQL queries, integrity constraints, functional dependencies, and 1NF–BCNF normalization.
-
-🔗 **Links:** [Repository](https://github.com/Phuchello/CSDL_UIT) · [Web View](https://phuchello.github.io/CSDL_UIT/)
-
----
-
-## // 05. CURRENT DIRECTION
-
-* **Intel OS** — Improving metadata ingestion, source reconciliation, and research retrieval workflows.
-* **Networking & Protocols** — Deepening packet analysis, protocol behavior, and concurrent socket programming.
-* **Edge Telemetry** — Experimenting with ESP32 sensor nodes and MQTT-based telemetry pipelines.
+* **Intelligent Digital Twins** — How sparse physical sensing can support useful digital representations and AI-assisted reasoning.
+* **Distributed Edge Intelligence** — How learning and inference can operate across resource-constrained connected devices.
+* **Efficient AIoT Systems** — How communication, compute, latency, and energy can be optimized together rather than independently.
 
 ---
 

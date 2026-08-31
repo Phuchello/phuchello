@@ -1,5 +1,5 @@
 # Phuchello Profile Configuration
-# Source of truth for identity, overview, focus areas, current trajectory, and connect links.
+# Source of truth for identity, overview, focus areas, research direction, and connect links.
 
 identity:
   name: "Võ Trọng Phúc"
@@ -9,23 +9,39 @@ identity:
   location: "Ho Chi Minh City, Vietnam"
   tagline: "Building intelligent systems where networks, edge devices, and AI meet."
 
+intro:
+  descriptor: "Undergraduate at the University of Information Technology, VNU-HCM, focused on networking, AIoT, and research-oriented systems."
+  supporting: "Interested in building intelligent systems where networks, edge devices, distributed data, and AI meet."
+
 overview:
   summary: "UIT undergraduate focused on networking and AIoT, with current work spanning packet analysis, edge telemetry, and research-data systems."
   focus_areas:
-    - title: "Networking & Observability"
-      desc: "TCP/UDP socket programming, application protocols, RAW socket capture, and packet analysis with Wireshark."
+    - title: "Networking & Systems"
+      desc: "Network programming, protocols, packet analysis, Linux/POSIX, and distributed services."
     - title: "Edge Systems & AIoT"
-      desc: "ESP32 sensor nodes, MQTT telemetry, and lightweight edge-to-service data flows."
-    - title: "Research Data & Intelligence"
-      desc: "Academic metadata ingestion, provenance-aware data modeling, PostgreSQL/pgvector, and retrieval workflows."
+      desc: "ESP32, sensors, MQTT, telemetry pipelines, and resource-constrained edge intelligence."
+    - title: "Research Engineering"
+      desc: "Research-data systems, reproducible experimentation, provenance-aware workflows, and intelligent system design."
 
-current_trajectory:
-  - title: "Intel OS"
-    desc: "Improving metadata ingestion, source reconciliation, and research retrieval workflows."
-  - title: "Networking & Protocols"
-    desc: "Deepening packet analysis, protocol behavior, and concurrent socket programming."
-  - title: "Edge Telemetry"
-    desc: "Experimenting with ESP32 sensor nodes and MQTT-based telemetry pipelines."
+research_interests:
+  - title: "Digital Twin"
+    desc: "Connecting physical environments with continuously updated computational representations."
+  - title: "Distributed / Federated Intelligence"
+    desc: "Learning across distributed devices without requiring all raw data to be centralized."
+  - title: "Continual Learning"
+    desc: "Systems that adapt as environments, sensors, and data distributions change over time."
+  - title: "Compute & Communication Optimization"
+    desc: "Reducing communication cost, compute usage, latency, and energy in distributed learning systems."
+  - title: "Reinforcement Learning for Orchestration"
+    desc: "Exploring adaptive decision-making for resource allocation, offloading, communication, and edge-system control."
+
+now_exploring:
+  - title: "Intelligent Digital Twins"
+    desc: "How sparse physical sensing can support useful digital representations and AI-assisted reasoning."
+  - title: "Distributed Edge Intelligence"
+    desc: "How learning and inference can operate across resource-constrained connected devices."
+  - title: "Efficient AIoT Systems"
+    desc: "How communication, compute, latency, and energy can be optimized together rather than independently."
 
 terminal_status:
   prompt: "[phuchello@workspace ~]$"
