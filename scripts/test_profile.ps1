@@ -56,7 +56,7 @@ if (-not ($projects -match "Phuchello/NCKH" -and $projects -match "Phuchello/NT1
 Write-Host "  [OK] Core flagship projects verified in data/projects.yml." -ForegroundColor Green
 
 $profile = Get-Content "data/profile.yml" -Raw -Encoding utf8
-if (-not ($profile -match "identity:" -and $profile -match "research_interests:" -and $profile -match "overview:")) {
+if (-not ($profile -match "identity:" -and $profile -match "research_interests:" -and $profile -match "now_exploring:" -and $profile -match "overview:")) {
     Write-Error "Missing required sections in data/profile.yml"
 }
 Write-Host "  [OK] Profile configuration structure verified." -ForegroundColor Green
@@ -69,6 +69,7 @@ $requiredTokens = @(
     "{{OVERVIEW_BLOCK}}",
     "{{RESEARCH_INTERESTS_BLOCK}}",
     "{{SYSTEM_STACK_BLOCK}}",
+    "{{NOW_EXPLORING_BLOCK}}",
     "{{CONNECT_BLOCK}}"
 )
 
@@ -77,7 +78,7 @@ foreach ($token in $requiredTokens) {
         Write-Error "README.template.md missing required token: $token"
     }
 }
-Write-Host "  [OK] All 5 data-driven tokens present in template." -ForegroundColor Green
+Write-Host "  [OK] All 6 data-driven tokens present in template." -ForegroundColor Green
 
 # 5. Data Reactivity & Synchronization Tests
 Write-Host "`n[5/5] Testing data-driven reactivity..." -ForegroundColor Yellow
